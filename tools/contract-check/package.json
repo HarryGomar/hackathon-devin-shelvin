@@ -1,0 +1,20 @@
+{
+  "name": "contract-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Checks a Shelvin backend against docs/backend-spec.md: endpoint shapes, auth, error format and job polling.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.15"
+  },
+  "scripts": {
+    "check": "node --disable-warning=ExperimentalWarning src/cli.ts",
+    "test": "node --disable-warning=ExperimentalWarning --test \"src/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "sync-types": "node --disable-warning=ExperimentalWarning src/sync-types.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~6.0.3"
+  }
+}

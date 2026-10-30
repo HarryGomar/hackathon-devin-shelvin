@@ -1,0 +1,996 @@
+[
+  {
+    "barcode": "7501011123588",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Doritos",
+      "categories": "Corn chips",
+      "code": "7501011123588",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/112/3588/front_es.30.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/112/3588/front_es.30.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "doritos nacho",
+      "product_name_es": "doritos nacho",
+      "quantity": "61 gr"
+    },
+    "offLatencyMs": 770,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/112/3588/front_es.30.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/112/3588/front_es.30.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7500478018512",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Sabritas",
+      "categories": "Corn chips",
+      "code": "7500478018512",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/047/801/8512/front_es.20.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/047/801/8512/front_es.20.400.jpg",
+      "product_name": "Doritos dinamita Chile y limon",
+      "product_name_es": "Doritos dinamita Chile y limon",
+      "quantity": "70g"
+    },
+    "offLatencyMs": 538,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/047/801/8512/front_es.20.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/047/801/8512/front_es.20.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501011127012",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Tostitos",
+      "categories": "Plant-based foods, Corn chips, Green sauces, es:Totopos",
+      "code": "7501011127012",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/112/7012/front_es.15.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/112/7012/front_es.15.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Tostitos salsa verde",
+      "product_name_es": "Tostitos salsa verde",
+      "quantity": "62g"
+    },
+    "offLatencyMs": 179,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/112/7012/front_es.15.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/112/7012/front_es.15.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501011110335",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Sabritas",
+      "categories": "Crisps",
+      "code": "7501011110335",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/111/0335/front_es.18.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/111/0335/front_es.18.400.jpg",
+      "manufacturing_places": "mexico",
+      "product_name": "Fritos Limón y sal",
+      "product_name_es": "Fritos Limón y sal",
+      "quantity": "62 g"
+    },
+    "offLatencyMs": 178,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/111/0335/front_es.18.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/111/0335/front_es.18.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7500810003671",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Barcel",
+      "categories": "Corn chips",
+      "code": "7500810003671",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/081/000/3671/front_es.30.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/081/000/3671/front_es.30.400.jpg",
+      "manufacturing_places": "Mexico",
+      "product_name": "Takis fuego",
+      "product_name_es": "Takis fuego",
+      "quantity": "70g"
+    },
+    "offLatencyMs": 596,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/081/000/3671/front_es.30.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/081/000/3671/front_es.30.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501030459958",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Barcel",
+      "categories": "Legumes, Salty snacks, Peanuts",
+      "code": "7501030459958",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/103/045/9958/front_es.9.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/103/045/9958/front_es.9.400.jpg",
+      "manufacturing_places": "mexico",
+      "product_name": "Hot Nuts Original",
+      "product_name_es": "Hot Nuts Original",
+      "quantity": "100g"
+    },
+    "offLatencyMs": 469,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/103/045/9958/front_es.9.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/103/045/9958/front_es.9.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501000111206",
+    "tier": "big",
+    "aisle": "Panadería",
+    "off": {
+      "brands": "Bimbo",
+      "categories": "Sliced breads, White breads",
+      "code": "7501000111206",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/011/1206/front_es.49.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/011/1206/front_es.49.400.jpg",
+      "manufacturing_places": "CIUDAD DE MEXICO",
+      "product_name": "Pan de molde blanco de harina de trigo",
+      "product_name_es": "Pan de molde blanco de harina de trigo",
+      "quantity": "620g"
+    },
+    "offLatencyMs": 183,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1206/front_es.49.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1206/front_es.49.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501030478591",
+    "tier": "big",
+    "aisle": "Pan dulce",
+    "off": {
+      "brands": "Marinela",
+      "categories": "Cakes",
+      "code": "7501030478591",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/103/047/8591/front_es.7.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/103/047/8591/front_es.7.400.jpg",
+      "manufacturing_places": "ciudad-de-mexico",
+      "product_name": "Gansito 3 Pack",
+      "product_name_es": "Gansito 3 Pack",
+      "quantity": "150 g"
+    },
+    "offLatencyMs": 659,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/103/047/8591/front_es.7.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/103/047/8591/front_es.7.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501000658923",
+    "tier": "big",
+    "aisle": "Galletas",
+    "off": {
+      "brands": "Gamesa",
+      "categories": "Biscuits",
+      "code": "7501000658923",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/065/8923/front_es.18.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/065/8923/front_es.18.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Galletas Marias 170 GRS",
+      "product_name_es": "Galletas Marias 170 GRS",
+      "quantity": "170 g"
+    },
+    "offLatencyMs": 176,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/065/8923/front_es.18.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/065/8923/front_es.18.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "75007614",
+    "tier": "big",
+    "aisle": "Refrescos",
+    "off": {
+      "brands": "Coca-Cola",
+      "categories": "Colas, Sweetened beverages",
+      "code": "75007614",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/000/007/500/7614/front_es.40.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/000/007/500/7614/front_es.40.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Coca cola",
+      "product_name_es": "Coca cola",
+      "quantity": "600ml"
+    },
+    "offLatencyMs": 1020,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/000/007/500/7614/front_es.40.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/000/007/500/7614/front_es.40.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501055305339",
+    "tier": "big",
+    "aisle": "Refrescos",
+    "off": {
+      "brands": "Coca cola",
+      "categories": "Diet cola soft drink",
+      "code": "7501055305339",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/530/5339/front_es.16.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/530/5339/front_es.16.400.jpg",
+      "manufacturing_places": "Queretaro",
+      "product_name": "Coca Cola Light 600",
+      "product_name_es": "Coca Cola Light 600",
+      "quantity": "600 ml"
+    },
+    "offLatencyMs": 178,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/530/5339/front_es.16.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/530/5339/front_es.16.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501020565935",
+    "tier": "big",
+    "aisle": "Lácteos",
+    "off": {
+      "brands": "Lala",
+      "categories": "Pasteurised milks, Whole milks",
+      "code": "7501020565935",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/102/056/5935/front_es.48.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/102/056/5935/front_es.48.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Leche entera ultrapasteurizada adicionada con vitaminas A y D",
+      "product_name_es": "Leche entera ultrapasteurizada adicionada con vitaminas A y D",
+      "quantity": "1 l"
+    },
+    "offLatencyMs": 947,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/102/056/5935/front_es.48.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/102/056/5935/front_es.48.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501020515299",
+    "tier": "big",
+    "aisle": "Lácteos",
+    "off": {
+      "brands": "Lala",
+      "categories": "Dairies, fr:Pâtes à tartiner, es:Crema",
+      "code": "7501020515299",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/102/051/5299/front_es.36.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/102/051/5299/front_es.36.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "media crema",
+      "product_name_es": "media crema",
+      "quantity": "250ml"
+    },
+    "offLatencyMs": 182,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/102/051/5299/front_es.36.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/102/051/5299/front_es.36.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501059214385",
+    "tier": "big",
+    "aisle": "Desayuno",
+    "off": {
+      "brands": "Nestlé",
+      "categories": "Sweet snacks, Cocoa and chocolate powders, Instant beverages",
+      "code": "7501059214385",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/921/4385/front_es.34.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/921/4385/front_es.34.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "chocolate nesquik",
+      "product_name_es": "chocolate nesquik",
+      "quantity": "400 g"
+    },
+    "offLatencyMs": 178,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/921/4385/front_es.34.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/921/4385/front_es.34.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501058611062",
+    "tier": "big",
+    "aisle": "Lácteos",
+    "off": {
+      "brands": "Nestlé, Carnation, Clavel",
+      "categories": "Milks, Evaporated milks without sugar",
+      "code": "7501058611062",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/861/1062/front_es.63.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/861/1062/front_es.63.400.jpg",
+      "manufacturing_places": "Ciudad de México, México",
+      "product_name": "Leche Evaporada",
+      "product_name_es": "Leche Evaporada",
+      "quantity": "360 g (339.9 ml)"
+    },
+    "offLatencyMs": 293,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/861/1062/front_es.63.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/861/1062/front_es.63.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501013110425",
+    "tier": "big",
+    "aisle": "Jugos",
+    "off": {
+      "brands": "Jumex",
+      "categories": "Apple nectars",
+      "code": "7501013110425",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/311/0425/front_es.6.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/311/0425/front_es.6.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Néctar de manzana",
+      "product_name_es": "Néctar de manzana",
+      "quantity": "250 ml"
+    },
+    "offLatencyMs": 868,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/311/0425/front_es.6.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/311/0425/front_es.6.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501055351237",
+    "tier": "big",
+    "aisle": "Jugos",
+    "off": {
+      "brands": "del Valle",
+      "categories": "Fruit sodas",
+      "code": "7501055351237",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/535/1237/front_es.14.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/535/1237/front_es.14.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Naranja & Nada",
+      "product_name_es": "Naranja & Nada",
+      "quantity": "600 ml"
+    },
+    "offLatencyMs": 181,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/535/1237/front_es.14.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/535/1237/front_es.14.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501014302126",
+    "tier": "small",
+    "aisle": "Desayuno",
+    "off": {
+      "brands": "Ibarra",
+      "categories": "Beverages, Instant chocolate powders",
+      "code": "7501014302126",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/430/2126/front_es.7.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/430/2126/front_es.7.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Polvo para preparar bebida sabor a chocolate",
+      "product_name_es": "Polvo para preparar bebida sabor a chocolate",
+      "quantity": "327 g"
+    },
+    "offLatencyMs": 467,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/430/2126/front_es.7.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/430/2126/front_es.7.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501017004423",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "CONSERVAS LA COSTEÑA S.A. DE C.V., La Costeña",
+      "categories": "Meats and their products, Canned meals, Meals with pork, Black beans, Canned common beans, Refried beans",
+      "code": "7501017004423",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/700/4423/front_en.19.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/700/4423/front_en.19.400.jpg",
+      "manufacturing_places": "Ecatepec, México",
+      "product_name": "Frijoles Negros Refritos",
+      "product_name_es": "Frijoles Negros Refritos",
+      "quantity": "580 g"
+    },
+    "offLatencyMs": 367,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/700/4423/front_en.19.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/700/4423/front_en.19.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501003105486",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "Herdez",
+      "categories": "Tunas",
+      "code": "7501003105486",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/310/5486/front_es.24.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/310/5486/front_es.24.400.jpg",
+      "manufacturing_places": "MEXICO",
+      "product_name": "ATUN  EN AGUA ALETA AMARILLA",
+      "product_name_es": "ATUN  EN AGUA ALETA AMARILLA",
+      "quantity": "130 G"
+    },
+    "offLatencyMs": 179,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/310/5486/front_es.24.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/310/5486/front_es.24.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501018319038",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "La Moderna",
+      "categories": "Whole durum wheat pasta",
+      "code": "7501018319038",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/831/9038/front_es.27.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/831/9038/front_es.27.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Tornillo",
+      "product_name_es": "Tornillo",
+      "quantity": "200g"
+    },
+    "offLatencyMs": 1350,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/831/9038/front_es.27.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/831/9038/front_es.27.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501077400050",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "Maseca",
+      "categories": "Breakfast cereals, Cornmeal",
+      "code": "7501077400050",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/107/740/0050/front_en.37.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/107/740/0050/front_en.37.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Harina de Maíz Nixtamalizado",
+      "product_name_es": "Harina de Maíz Nixtamalizado",
+      "quantity": "200g"
+    },
+    "offLatencyMs": 439,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/107/740/0050/front_en.37.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/107/740/0050/front_en.37.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501073830509",
+    "tier": "small",
+    "aisle": "Aguas",
+    "off": {
+      "brands": "Peñafiel",
+      "categories": "Carbonated waters, Natural mineral waters",
+      "code": "7501073830509",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/107/383/0509/front_es.28.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/107/383/0509/front_es.28.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Agua mineral",
+      "product_name_es": "Agua mineral",
+      "quantity": "600 ml"
+    },
+    "offLatencyMs": 345,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/107/383/0509/front_es.28.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/107/383/0509/front_es.28.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501052420165",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "LA SIERRA",
+      "categories": "Seeds, Meals, Refried beans",
+      "code": "7501052420165",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/242/0165/front_es.17.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/242/0165/front_es.17.400.jpg",
+      "manufacturing_places": "MEXICO",
+      "product_name": "Frijoles Negros Refritos",
+      "product_name_es": "Frijoles Negros Refritos",
+      "quantity": "430 g"
+    },
+    "offLatencyMs": 178,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/242/0165/front_es.17.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/242/0165/front_es.17.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501209705640",
+    "tier": "small",
+    "aisle": "Lácteos",
+    "off": {
+      "brands": "Sello Rojo",
+      "categories": "Milks",
+      "code": "7501209705640",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/120/970/5640/front_en.3.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/120/970/5640/front_en.3.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Leche entera 3% grasa",
+      "quantity": "1.8L"
+    },
+    "offLatencyMs": 672,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/120/970/5640/front_en.3.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/120/970/5640/front_en.3.full.jpg",
+    "offStatus": "full"
+  },
+  {
+    "barcode": "7501011101456",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Sabritas",
+      "categories": "Crisps",
+      "code": "7501011101456",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/110/1456/front_es.5.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/110/1456/front_es.5.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Sabritas Originales",
+      "product_name_es": "Sabritas Originales",
+      "quantity": "42 g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-flavors"
+    ],
+    "offLatencyMs": 763,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1456/front_es.5.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1456/front_es.5.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1456/2.400.jpg"
+  },
+  {
+    "barcode": "7501011101678",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Pepsi cola, Sabritas",
+      "categories": "Crisps",
+      "code": "7501011101678",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/110/1678/front_es.24.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/110/1678/front_es.24.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Sabritas limon",
+      "product_name_es": "Sabritas limon",
+      "quantity": "46g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-flavors"
+    ],
+    "offLatencyMs": 641,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1678/front_es.24.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1678/front_es.24.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1678/4.400.jpg"
+  },
+  {
+    "barcode": "7501011101463",
+    "tier": "big",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "sabritas",
+      "categories": "Potato crisps, Frozen fried potatoes, es:Comida rápida",
+      "code": "7501011101463",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/101/110/1463/front_es.14.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/101/110/1463/front_es.14.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "sabrías adobadas",
+      "product_name_es": "sabrías adobadas",
+      "quantity": "42g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-flavors"
+    ],
+    "offLatencyMs": 618,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1463/front_es.14.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/101/110/1463/front_es.14.full.jpg"
+  },
+  {
+    "barcode": "7501055304745",
+    "tier": "big",
+    "aisle": "Bebidas",
+    "off": {
+      "brands": "Coca-cola",
+      "categories": "Colas, Sweetened beverages",
+      "code": "7501055304745",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/530/4745/front_es.28.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/530/4745/front_es.28.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Coca cola",
+      "product_name_es": "Coca cola",
+      "quantity": "3L"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 718,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/530/4745/front_es.28.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/530/4745/front_es.28.full.jpg"
+  },
+  {
+    "barcode": "7501055321681",
+    "tier": "big",
+    "aisle": "Bebidas",
+    "off": {
+      "brands": "Coca Cola",
+      "categories": "Artificially sweetened beverages, Colas, es:Refrescos",
+      "code": "7501055321681",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/532/1681/front_es.21.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/532/1681/front_es.21.400.jpg",
+      "manufacturing_places": "queretaro",
+      "product_name": "Coca Cola Sin Azúcar",
+      "product_name_es": "Coca Cola Sin Azúcar",
+      "quantity": "2.5 L"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 624,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/532/1681/front_es.21.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/532/1681/front_es.21.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/105/532/1681/5.400.jpg"
+  },
+  {
+    "barcode": "7501055349906",
+    "tier": "big",
+    "aisle": "Bebidas",
+    "off": {
+      "brands": "Coca-Cola, Coca-Cola Company",
+      "categories": "Artificially sweetened beverages, Colas",
+      "code": "7501055349906",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/105/534/9906/front_es.10.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/105/534/9906/front_es.10.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Refresco Coca Cola sin azúcar",
+      "product_name_es": "Refresco Coca Cola sin azúcar",
+      "quantity": "235 ml"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 633,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/534/9906/front_es.10.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/105/534/9906/front_es.10.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/105/534/9906/1.400.jpg"
+  },
+  {
+    "barcode": "7501020550986",
+    "tier": "big",
+    "aisle": "Lácteos",
+    "off": {
+      "brands": "LALA",
+      "categories": "Lactose-free milk",
+      "code": "7501020550986",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/102/055/0986/front_en.20.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/102/055/0986/front_en.20.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Lala 100 sin lactosa",
+      "product_name_es": "Lala 100 sin lactosa",
+      "quantity": "1 l"
+    },
+    "offStatus": "full",
+    "offLatencyMs": 630,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/102/055/0986/front_en.20.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/102/055/0986/front_en.20.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/102/055/0986/1.400.jpg"
+  },
+  {
+    "barcode": "7501008057292",
+    "tier": "big",
+    "aisle": "Cereales",
+    "off": {
+      "brands": "Kellogs",
+      "categories": "Breakfast cereals",
+      "code": "7501008057292",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/805/7292/front_en.29.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/805/7292/front_en.29.400.jpg",
+      "product_name": "Zucaritas"
+    },
+    "offStatus": "thin",
+    "tricky": [
+      "thin-off",
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 711,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/805/7292/front_en.29.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/805/7292/front_en.29.full.jpg"
+  },
+  {
+    "barcode": "7501008040928",
+    "tier": "big",
+    "aisle": "Cereales",
+    "off": {
+      "brands": "Kellogg's",
+      "code": "7501008040928",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/804/0928/front_aa.9.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/804/0928/front_aa.9.400.jpg",
+      "product_name": "Zucaritas",
+      "product_name_es": "ZUCARITAS",
+      "quantity": "200g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 208,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/804/0928/front_aa.9.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/804/0928/front_aa.9.full.jpg"
+  },
+  {
+    "barcode": "7501000111800",
+    "tier": "big",
+    "aisle": "Panadería",
+    "off": {
+      "brands": "Bimbo",
+      "categories": "Toasts",
+      "code": "7501000111800",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/100/011/1800/front_en.32.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/100/011/1800/front_en.32.400.jpg",
+      "manufacturing_places": "Ciudad de México, México",
+      "product_name": "Pan Tostado Clásico",
+      "product_name_es": "Pan Tostado Clásico",
+      "quantity": "210 g"
+    },
+    "offStatus": "full",
+    "offLatencyMs": 206,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1800/front_en.32.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1800/front_en.32.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1800/1.400.jpg"
+  },
+  {
+    "barcode": "7501791671330",
+    "tier": "small",
+    "aisle": "Cereales",
+    "off": {
+      "brands": "great value",
+      "categories": "Corn flakes",
+      "code": "7501791671330",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/179/167/1330/front_es.7.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/179/167/1330/front_es.7.400.jpg",
+      "product_name": "corn flakes",
+      "product_name_es": "corn flakes",
+      "quantity": "530g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "store-brand"
+    ],
+    "offLatencyMs": 213,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/179/167/1330/front_es.7.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/179/167/1330/front_es.7.full.jpg"
+  },
+  {
+    "barcode": "7501791672160",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "aurrera",
+      "categories": "Mayonnaises, groceries",
+      "code": "7501791672160",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/179/167/2160/front_es.4.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/179/167/2160/front_es.4.400.jpg",
+      "manufacturing_places": "mexico",
+      "product_name": "mayonesa",
+      "product_name_es": "mayonesa",
+      "quantity": "500 g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "store-brand"
+    ],
+    "offLatencyMs": 649,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/179/167/2160/front_es.4.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/179/167/2160/front_es.4.full.jpg"
+  },
+  {
+    "barcode": "7500533003330",
+    "tier": "small",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Member's Mark",
+      "categories": "Almonds",
+      "code": "7500533003330",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/053/300/3330/front_es.10.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/053/300/3330/front_es.10.400.jpg",
+      "manufacturing_places": "México",
+      "product_name": "Almendras naturales",
+      "product_name_es": "Almendras naturales",
+      "quantity": "907 g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "store-brand"
+    ],
+    "offLatencyMs": 722,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/750/053/300/3330/front_es.10.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/750/053/300/3330/front_es.10.full.jpg"
+  },
+  {
+    "barcode": "078742268057",
+    "tier": "small",
+    "aisle": "Abarrotes",
+    "off": {
+      "brands": "Member's Mark",
+      "categories": "Strawberry jams, Vegetariano",
+      "code": "0078742268057",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/007/874/226/8057/front_es.15.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/007/874/226/8057/front_es.15.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Mermelada de Fresa",
+      "product_name_es": "Mermelada de Fresa",
+      "quantity": "1,2kg"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "upc-a",
+      "store-brand"
+    ],
+    "offLatencyMs": 205,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/007/874/226/8057/front_es.15.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/007/874/226/8057/front_es.15.full.jpg"
+  },
+  {
+    "barcode": "096619545346",
+    "tier": "small",
+    "aisle": "Botanas",
+    "off": {
+      "brands": "Kirkland Signature",
+      "categories": "Roasted pistachios, Salted pistachios",
+      "code": "0096619545346",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/009/661/954/5346/front_en.112.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/009/661/954/5346/front_en.112.400.jpg",
+      "manufacturing_places": "USA",
+      "product_name": "Pistachios",
+      "product_name_es": "Pistachios",
+      "quantity": "1.36 kg (48 oz) 3 lb"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "upc-a",
+      "import",
+      "store-brand"
+    ],
+    "offLatencyMs": 211,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/009/661/954/5346/front_en.112.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/009/661/954/5346/front_en.112.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/009/661/954/5346/7.400.jpg"
+  },
+  {
+    "barcode": "034000140589",
+    "tier": "big",
+    "aisle": "Dulces y chocolates",
+    "off": {
+      "brands": "HERSHEYS",
+      "categories": "es:Mercado/Dulces y chocolatería/Chocolatería &gt; Mercado/Dulces y chocolatería &gt; Mercado",
+      "code": "0034000140589",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/003/400/014/0589/front_en.35.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/003/400/014/0589/front_en.35.400.jpg",
+      "manufacturing_places": "",
+      "product_name": "Chocolates Hersheys",
+      "product_name_es": "Chocolates Hersheys",
+      "quantity": "306g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "upc-a",
+      "import"
+    ],
+    "offLatencyMs": 650,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/003/400/014/0589/front_en.35.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/003/400/014/0589/front_en.35.full.jpg"
+  },
+  {
+    "barcode": "1105247480000",
+    "tier": "small",
+    "aisle": "Dulces y chocolates",
+    "off": {
+      "brands": "IKEA",
+      "categories": "Dark chocolates",
+      "code": "1105247480000",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/110/524/748/0000/front_en.3.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/110/524/748/0000/front_en.3.400.jpg",
+      "manufacturing_places": "España",
+      "product_name": "Choklad Mörk",
+      "product_name_es": "Choklad Mörk",
+      "quantity": "100 g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "import",
+      "same-line-flavors"
+    ],
+    "offLatencyMs": 707,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/110/524/748/0000/front_en.3.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/110/524/748/0000/front_en.3.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/110/524/748/0000/7.400.jpg"
+  },
+  {
+    "barcode": "1005247440007",
+    "tier": "small",
+    "aisle": "Dulces y chocolates",
+    "off": {
+      "brands": "IKEA",
+      "categories": "Milk chocolates",
+      "code": "1005247440007",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/100/524/744/0007/front_fr.30.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/100/524/744/0007/front_fr.30.400.jpg",
+      "product_name": "choklad ljus"
+    },
+    "offStatus": "thin",
+    "tricky": [
+      "import",
+      "same-line-flavors",
+      "thin-off"
+    ],
+    "offLatencyMs": 218,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/100/524/744/0007/front_fr.30.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/100/524/744/0007/front_fr.30.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/100/524/744/0007/4.400.jpg"
+  },
+  {
+    "barcode": "1305247520007",
+    "tier": "small",
+    "aisle": "Dulces y chocolates",
+    "off": {
+      "brands": "IKEA",
+      "categories": "pt:COMIDA",
+      "code": "1305247520007",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/130/524/752/0007/front_en.20.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/130/524/752/0007/front_en.20.400.jpg",
+      "product_name": "Choklad Nöt",
+      "quantity": "100g"
+    },
+    "offStatus": "full",
+    "tricky": [
+      "import",
+      "same-line-flavors"
+    ],
+    "offLatencyMs": 601,
+    "imageUrl": "https://images.openfoodfacts.org/images/products/130/524/752/0007/front_en.20.400.jpg",
+    "imageFullUrl": "https://images.openfoodfacts.org/images/products/130/524/752/0007/front_en.20.full.jpg",
+    "barcodeImageUrl": "https://images.openfoodfacts.org/images/products/130/524/752/0007/3.400.jpg"
+  },
+  {
+    "barcode": "7509546008202",
+    "tier": "big",
+    "aisle": "Limpieza",
+    "off": {
+      "code": "7509546008202",
+      "image_front_url": "https://images.openfoodfacts.org/images/products/750/954/600/8202/front_es.3.400.jpg",
+      "image_url": "https://images.openfoodfacts.org/images/products/750/954/600/8202/front_es.3.400.jpg",
+      "product_name": "fab",
+      "product_name_es": "fab"
+    },
+    "offStatus": "thin",
+    "tricky": [
+      "thin-off"
+    ],
+    "offLatencyMs": 628,
+    "imageUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79604054/7509546008202_00.jpg",
+    "imageFullUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79604054/7509546008202_00.jpg"
+  },
+  {
+    "barcode": "7501025411138",
+    "tier": "big",
+    "aisle": "Limpieza",
+    "offStatus": "none",
+    "tricky": [
+      "no-off",
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 212,
+    "imageUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79478575/7501025411138_00.jpg",
+    "imageFullUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79478575/7501025411138_00.jpg"
+  },
+  {
+    "barcode": "7501025411145",
+    "tier": "big",
+    "aisle": "Limpieza",
+    "offStatus": "none",
+    "tricky": [
+      "no-off",
+      "same-line-sizes"
+    ],
+    "offLatencyMs": 204,
+    "imageUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79478565/7501025411145_00.jpg",
+    "imageFullUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79478565/7501025411145_00.jpg"
+  },
+  {
+    "barcode": "7501025405106",
+    "tier": "big",
+    "aisle": "Limpieza",
+    "offStatus": "none",
+    "tricky": [
+      "no-off"
+    ],
+    "offLatencyMs": 205,
+    "imageUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79562645/7501025405106_00.jpg",
+    "imageFullUrl": "https://chedrauimx.vteximg.com.br/arquivos/ids/79562645/7501025405106_00.jpg"
+  }
+]

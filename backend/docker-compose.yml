@@ -1,0 +1,23 @@
+# Local Postgres for the backend: `docker compose up -d` in backend/.
+# Host port 5433 by default (Postgres.app and Homebrew usually hold 5432); override with SCANNER_DB_PORT.
+# Local development credentials only; the backend reads DATABASE_URL from the environment.
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: scanner
+      POSTGRES_PASSWORD: scanner
+      POSTGRES_DB: scanner
+    ports:
+      - "${SCANNER_DB_PORT:-5433}:5432"
+    volumes:
+      - scanner-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scanner -d scanner"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  scanner-pg:

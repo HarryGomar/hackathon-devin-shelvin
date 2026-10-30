@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelvin architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; each figure sits on its own card and scrolls sideways on a phone. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --tile: #f6f8fb; --ink: #151922; --ink-2: #5a6272; --line: #d5dae2; --line-2: #a9b1bf;
+  --devin: #2c58cf; --wash-devin: #ebf0fd;
+  --pass: #1b7a4b; --wash-pass: #e4f3ea;
+  --fail: #c43a2f; --wash-fail: #fcebe8;
+  --refused: #9a5c00; --wash-refused: #fcf1de;
+  --display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e1116; --surface: #161a21; --tile: #1c212a; --ink: #e8ebf0; --ink-2: #9ea7b6; --line: #2f3642; --line-2: #4a5363;
+  --devin: #87a3ff; --wash-devin: #1a2341; --pass: #55c78e; --wash-pass: #12281d;
+  --fail: #ff8477; --wash-fail: #321714; --refused: #e8ad55; --wash-refused: #2d2110; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e1116; --surface: #161a21; --tile: #1c212a; --ink: #e8ebf0; --ink-2: #9ea7b6; --line: #2f3642; --line-2: #4a5363;
+  --devin: #87a3ff; --wash-devin: #1a2341; --pass: #55c78e; --wash-pass: #12281d;
+  --fail: #ff8477; --wash-fail: #321714; --refused: #e8ad55; --wash-refused: #2d2110; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--sans); }
+.page { max-width: 1120px; margin: 0 auto; padding-block: 44px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 64px; }
+.intro { display: grid; gap: 16px; max-width: 70ch; }
+.brandline { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--ink-2); font: 500 12px/1 var(--mono); letter-spacing: .04em; }
+.brandline svg { height: 22px; width: auto; color: var(--ink); }
+h1 { font: 700 clamp(32px, 5.4vw, 48px)/1.04 var(--display); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+h2 { font: 600 26px/1.15 var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lede { font-size: 17px; color: var(--ink-2); }
+.lede b { color: var(--ink); font-weight: 600; }
+section { display: grid; gap: 18px; }
+.head { display: grid; gap: 6px; }
+.kicker { font: 500 12px var(--mono); color: var(--ink-2); letter-spacing: .06em; text-transform: uppercase; }
+figure { margin: 0; display: grid; gap: 14px; }
+.card { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+figcaption { color: var(--ink-2); font-size: 14px; max-width: 74ch; }
+
+/* Numbered steps under the overview: the numbers match the badges on the arrows. */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 24px; }
+.steps li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; font-size: 14px; min-width: 0; }
+.steps b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--bg);
+  font: 600 12px/1 var(--sans); margin-top: 1px; }
+.steps .devin b { background: var(--devin); }
+
+/* Diagrams: page CSS colors the inline SVG from the same tokens, so both themes read. */
+.dg { display: block; width: 100%; height: auto; min-width: 900px; color: var(--ink); font-family: var(--sans); }
+.dg text { fill: var(--ink); }
+.dg .name { font: 600 16px var(--sans); }
+.dg .t { font-size: 14px; font-weight: 600; }
+.dg .s { font-size: 13px; fill: var(--ink-2); }
+.dg .m { font-family: var(--mono); font-size: 12px; }
+.dg .lbl { font-size: 12.5px; fill: var(--ink-2); font-weight: 500; }
+.dg .ct { font: 500 12px var(--mono); fill: var(--ink); text-anchor: middle; }
+.dg .mid { text-anchor: middle; } .dg .end { text-anchor: end; }
+.dg .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 6px; stroke-linejoin: round; }
+.dg .tile { fill: var(--tile); stroke: var(--line); stroke-width: 1.2; }
+.dg .disc { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.dg .chip { fill: var(--surface); stroke: var(--line); stroke-width: 1.1; }
+.dg .boundary { fill: none; stroke: var(--line-2); stroke-width: 2; }
+.dg .devin.tile, .dg .devin.chip { fill: var(--wash-devin); stroke: var(--devin); }
+.dg .pass.tile, .dg .pass.chip { fill: var(--wash-pass); stroke: var(--pass); }
+.dg .fail.tile, .dg .fail.chip { fill: var(--wash-fail); stroke: var(--fail); }
+.dg .refused.tile, .dg .refused.chip { fill: var(--wash-refused); stroke: var(--refused); stroke-dasharray: 5 4; }
+.dg .ln { fill: none; stroke: var(--line-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dg .ln.devin { stroke: var(--devin); } .dg .ln.pass { stroke: var(--pass); }
+.dg .ln.fail { stroke: var(--fail); } .dg .ln.refused { stroke: var(--refused); }
+.dg .ln.thin { stroke-width: 1.2; }
+.dg .dash { stroke-dasharray: 6 5; }
+.dg .ah { fill: var(--line-2); } .dg .ah.devin { fill: var(--devin); } .dg .ah.pass { fill: var(--pass); }
+.dg .ah.fail { fill: var(--fail); } .dg .ah.refused { fill: var(--refused); }
+.dg text.devin { fill: var(--devin); } .dg text.pass { fill: var(--pass); }
+.dg text.fail { fill: var(--fail); } .dg text.refused { fill: var(--refused); }
+.dg .badge circle { fill: var(--ink); } .dg .badge.devin circle { fill: var(--devin); }
+.dg .badge text { fill: var(--bg); font: 600 12px var(--sans); text-anchor: middle; }
+.dg .ico, .dg .logo { fill: currentColor; color: var(--ink); }
+.dg .glyph { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.dg .glyph.pass { stroke: var(--pass); } .dg .glyph.fail { stroke: var(--fail); }
+.dg .seg { fill: var(--wash-devin); stroke: var(--devin); stroke-width: 1.2; }
+.dg .seg.alt { fill: var(--devin); fill-opacity: .22; }
+.dg .seg.be { fill: var(--tile); stroke: var(--line-2); }
+.dg .seg.ok { fill: var(--pass); stroke: var(--pass); }
+.dg .grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+.dg .axis { stroke: var(--line-2); stroke-width: 1.2; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 2px; min-width: 0; }
+.stat b { font: 600 22px/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--ink-2); font-size: 13.5px; }
+.stat.ok b { color: var(--pass); }
+
+.sites { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.site { background: var(--surface); border: 1px dashed var(--refused); border-radius: 14px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.site h3 { margin: 0; font: 500 14px var(--mono); overflow-wrap: anywhere; }
+.code { justify-self: start; font: 500 11.5px var(--mono); color: var(--refused); background: var(--wash-refused); border-radius: 999px; padding: 3px 9px; }
+.site p { font-size: 13.5px; color: var(--ink-2); }
+.site .alt { color: var(--ink); }
+
+.limits { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.limits div { background: var(--surface); padding: 14px 16px; display: grid; gap: 2px; min-width: 0; }
+.limits b { font: 600 20px/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.limits span { color: var(--ink-2); font-size: 13.5px; }
+.limits code { font: 12px var(--mono); color: var(--ink-2); }
+.foot { color: var(--ink-2); font-size: 13px; display: grid; gap: 6px; }
+.foot code { font: 12px var(--mono); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header class="intro">
+  <div class="brandline">
+    <svg viewBox="0 0 76 20" role="img" aria-label="Devin"><path d="M8.30437 8.18853C7.65928 7.81601 6.85065 7.81601 6.20556 8.18853L4.53379 9.1607C4.47927 9.18796 4.42476 9.21522 4.36116 9.23339C4.35207 9.23339 4.3339 9.23339 4.32481 9.24248C4.2703 9.25156 4.2067 9.26065 4.15218 9.26973H4.1431C4.1431 9.26973 4.13401 9.26973 4.12493 9.26973C4.07041 9.26973 4.0159 9.26065 3.96138 9.25156C3.9523 9.25156 3.94321 9.25156 3.93413 9.25156C3.87961 9.23339 3.8251 9.21522 3.77058 9.18796C3.77058 9.18796 3.7615 9.18796 3.75241 9.18796L0.399772 7.2527C0.163542 7.11641 0.00908422 6.86201 0.00908422 6.58035V2.70982C0.00908422 2.42817 0.154456 2.17376 0.399772 2.03748L3.75241 0.102215C3.98864 -0.0340715 4.28847 -0.0340715 4.5247 0.102215L7.87734 2.03748C7.87734 2.03748 7.87734 2.03748 7.88643 2.03748C7.94094 2.06474 7.98637 2.10108 8.0318 2.14651C8.0318 2.14651 8.04088 2.15559 8.04997 2.16468C8.08631 2.20102 8.12265 2.24645 8.14991 2.29188C8.14991 2.29188 8.159 2.30097 8.159 2.31914C8.18626 2.37365 8.21351 2.42817 8.2226 2.48268C8.2226 2.49177 8.2226 2.50994 8.23168 2.51902C8.24077 2.57354 8.25894 2.63714 8.25894 2.70074V4.636C8.25894 5.38103 8.65872 6.08064 9.3038 6.45315C9.94889 6.82567 10.7575 6.82567 11.4026 6.45315L13.0744 5.48098C13.1289 5.45372 13.1834 5.42646 13.247 5.40829C13.2561 5.40829 13.2743 5.40829 13.2834 5.39921C13.3379 5.39012 13.4015 5.38103 13.456 5.37195H13.4832C13.5378 5.37195 13.5923 5.38103 13.6468 5.39012C13.6559 5.39012 13.665 5.39012 13.674 5.39012C13.7286 5.40829 13.7831 5.42646 13.8376 5.45372C13.8376 5.45372 13.8467 5.45372 13.8558 5.45372L17.2084 7.38898C17.4446 7.52527 17.5991 7.77967 17.5991 8.06133V11.9319C17.5991 12.2135 17.4537 12.4679 17.2084 12.6042L13.8558 14.5395C13.8558 14.5395 13.8467 14.5395 13.8376 14.5395C13.7831 14.5667 13.7286 14.594 13.674 14.6031C13.665 14.6031 13.6559 14.6031 13.6468 14.6031C13.5923 14.6122 13.5378 14.6212 13.4832 14.6212C13.4832 14.6212 13.4742 14.6212 13.4651 14.6212C13.4106 14.6212 13.347 14.6212 13.2924 14.594C13.2834 14.594 13.2652 14.594 13.2561 14.5849C13.2016 14.5667 13.138 14.5486 13.0835 14.5122L11.4117 13.54C10.7666 13.1675 9.95798 13.1675 9.31289 13.54C8.6678 13.9125 8.26803 14.6122 8.26803 15.3572V17.2924C8.26803 17.356 8.25894 17.4196 8.24077 17.4742C8.24077 17.4832 8.24077 17.5014 8.23168 17.5105C8.21351 17.565 8.19534 17.6195 8.16809 17.674C8.16809 17.674 8.159 17.6922 8.14991 17.7013C8.12265 17.7467 8.08631 17.7922 8.04997 17.8285C8.04997 17.8285 8.04088 17.8376 8.0318 17.8467C7.98637 17.8921 7.94094 17.9284 7.88643 17.9557C7.88643 17.9557 7.88643 17.9557 7.87734 17.9557L4.5247 19.891C4.40659 19.9637 4.2703 20 4.13401 20C3.99773 20 3.86144 19.9637 3.74333 19.891L0.390687 17.9557C0.154458 17.8194 0 17.565 0 17.2834V13.4128C0 13.1312 0.145372 12.8768 0.390687 12.7405L3.74333 10.8052C3.74333 10.8052 3.75241 10.8052 3.7615 10.8052C3.81601 10.778 3.87053 10.7507 3.92504 10.7416C3.92504 10.7416 3.94321 10.7416 3.9523 10.7416C4.00681 10.7235 4.06133 10.7235 4.11584 10.7235H4.1431C4.19761 10.7235 4.26121 10.7325 4.31573 10.7507C4.32481 10.7507 4.34298 10.7507 4.35207 10.7507C4.40658 10.7689 4.47019 10.7871 4.5247 10.8234L6.19648 11.7956C6.84157 12.1681 7.6502 12.1681 8.29528 11.7956C8.94037 11.4231 9.34015 10.7235 9.34015 9.97842C9.34015 9.23339 8.94037 8.53379 8.29528 8.16127V8.15219L8.30437 8.18853Z" fill="currentColor"></path><path d="M67.9567 7.64393C68.3834 7.06793 69.4714 6.49193 70.6234 6.49193C73.8447 6.49193 75.21 8.81726 75.21 11.5479V17.3933C75.21 17.4573 75.1674 17.4999 75.1034 17.4999H73.0127C72.9487 17.4999 72.906 17.4573 72.906 17.3933V11.5479C72.906 10.0973 72.202 8.58259 70.3034 8.58259C68.5754 8.58259 67.722 9.96926 67.722 11.4413V17.3933C67.722 17.4573 67.6794 17.4999 67.6154 17.4999H65.546C65.482 17.4999 65.4394 17.4573 65.4394 17.3933V6.81193C65.4394 6.74793 65.482 6.70526 65.546 6.70526H67.3594C67.4447 6.70526 67.4874 6.74793 67.5087 6.81193L67.722 7.60126C67.7647 7.75059 67.8927 7.72926 67.9567 7.64393Z" fill="currentColor"></path><path d="M62.8545 17.5H60.7852C60.7212 17.5 60.6785 17.4573 60.6785 17.3933V6.81201C60.6785 6.74801 60.7212 6.70534 60.7852 6.70534H62.8545C62.9185 6.70534 62.9612 6.74801 62.9612 6.81201V17.3933C62.9612 17.4573 62.9185 17.5 62.8545 17.5ZM63.0039 5.44668H60.6572C60.5932 5.44668 60.5505 5.40401 60.5505 5.34001V2.95068C60.5505 2.88668 60.5932 2.84401 60.6572 2.84401H63.0039C63.0679 2.84401 63.1105 2.88668 63.1105 2.95068V5.34001C63.1105 5.40401 63.0679 5.44668 63.0039 5.44668Z" fill="currentColor"></path><path d="M54.4259 15.2385L57.1139 6.83321C57.1565 6.72654 57.2419 6.70521 57.3059 6.70521H59.4605C59.5245 6.70521 59.5885 6.74788 59.5458 6.85454L55.9832 17.3932C55.9619 17.4572 55.9192 17.4999 55.8552 17.4999H52.7832C52.7192 17.4999 52.6765 17.4572 52.6552 17.3932L49.0712 6.85454C49.0285 6.74788 49.0712 6.70521 49.1565 6.70521H51.3539C51.4179 6.70521 51.5032 6.74788 51.5245 6.83321L54.2125 15.2385C54.2552 15.3665 54.3832 15.3665 54.4259 15.2385Z" fill="currentColor"></path><path d="M48.9022 12.9133C48.8808 12.9773 48.8168 13.0199 48.7528 13.0199H41.0942C41.0302 13.0199 40.9875 13.0626 40.9875 13.1266C40.9875 14.4919 42.0755 15.6439 43.7822 15.6439C44.9982 15.6439 45.8088 15.1533 46.1715 14.4066C46.2142 14.3213 46.2568 14.2999 46.3422 14.2999H48.4755C48.5395 14.2999 48.6462 14.2999 48.6035 14.4706C48.0915 16.4973 46.1928 17.7133 43.7822 17.7133C40.6248 17.7133 38.5768 15.4306 38.5768 12.1026C38.5768 8.75326 40.5608 6.49193 43.7822 6.49193C47.0035 6.49193 48.9875 8.83859 48.9875 12.1666C48.9875 12.4866 48.9448 12.7213 48.9022 12.9133ZM41.0942 11.0999H46.4062C46.4702 11.0999 46.5128 11.0573 46.5128 10.9933C46.5128 9.96926 45.7022 8.58259 43.7822 8.58259C41.8835 8.58259 40.9875 10.0759 40.9875 10.9933C40.9875 11.0573 41.0302 11.0999 41.0942 11.0999Z" fill="currentColor"></path><path d="M30.715 17.4999H25.2324C25.1684 17.4999 25.1257 17.4573 25.1257 17.3932V2.58792C25.1257 2.52392 25.1684 2.48125 25.2324 2.48125H30.715C35.2164 2.48125 37.4137 5.65992 37.4137 10.1399C37.4137 14.6626 35.2164 17.4999 30.715 17.4999ZM27.515 15.4306H30.715C33.4244 15.4306 35.0243 13.5746 35.0243 10.1399C35.0243 6.74792 33.4244 4.57192 30.715 4.57192H27.515C27.451 4.57192 27.4084 4.61458 27.4084 4.67858V15.3239C27.4084 15.3879 27.451 15.4306 27.515 15.4306Z" fill="currentColor"></path></svg>
+    <span>Scrapers built by Devin, checked by code</span>
+  </div>
+  <h1>Shelvin architecture</h1>
+  <p class="lede"><b>Shelvin</b> (shelf + Devin) scans a product and finds the brand's own site first, then Mexican
+  retailers. When a site has no scraper, Devin writes one, code checks it, and the app shows every step. Sites that
+  refuse AI agents are listed, never scraped.</p>
+</header>
+
+<!-- 1. Overview -->
+<section>
+  <div class="head"><span class="kicker">Overview</span><h2>Who talks to whom</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 590" role="img" aria-label="Overview: the Shelvin iPhone app talks to the backend; the backend starts a Devin session per site and follows it; Devin pushes a branch and pull request to GitHub; the backend gates the two files from that branch; the backend scrapes the brand site and retailers; five sites that block AI agents are not collected.">
+  <defs>
+    <marker id="f1-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f1-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f1-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah refused" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <!-- four tiles on one row, 210 wide, 100 apart -->
+  <rect class="tile" x="30" y="90" width="210" height="240" rx="22"/>
+  <circle class="disc" cx="135" cy="148" r="34"/>
+  <svg class="ico" x="117" y="129" width="36" height="36" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+  <text class="name mid" x="135" y="212">Shelvin app</text>
+  <text class="s mid" x="135" y="240">Scan a product</text>
+  <text class="s mid" x="135" y="260">Watch builds live</text>
+  <rect class="chip" x="85" y="284" width="100" height="26" rx="13"/>
+  <svg class="ico" x="99" y="290" width="14" height="14" viewBox="0 0 24 24"><path d="M0 20.084c.043.53.23 1.063.718 1.778.58.849 1.576 1.315 2.303.567.49-.505 5.794-9.776 8.35-13.29a.761.761 0 011.248 0c2.556 3.514 7.86 12.785 8.35 13.29.727.748 1.723.282 2.303-.567.57-.835.728-1.42.728-2.046 0-.426-8.26-15.798-9.092-17.078-.8-1.23-1.044-1.498-2.397-1.542h-1.032c-1.353.044-1.597.311-2.398 1.542C8.267 3.991.33 18.758 0 19.77Z"/></svg>
+  <text class="s" x="119" y="302">Expo</text>
+
+  <rect class="tile" x="340" y="90" width="210" height="240" rx="22"/>
+  <circle class="disc" cx="445" cy="148" r="34"/>
+  <svg class="ico" x="427" y="130" width="36" height="36" viewBox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>
+  <text class="name mid" x="445" y="212">Backend</text>
+  <text class="s mid" x="445" y="240">Search · access · builds</text>
+  <text class="s mid" x="445" y="260">gate · scrape</text>
+  <rect class="chip" x="385" y="284" width="120" height="26" rx="13"/>
+  <text class="ct" x="445" y="302">port 8791</text>
+
+  <rect class="tile devin" x="650" y="90" width="210" height="240" rx="22"/>
+  <svg class="logo" x="684" y="128" width="142" height="37" viewBox="0 0 76 20"><path d="M8.30437 8.18853C7.65928 7.81601 6.85065 7.81601 6.20556 8.18853L4.53379 9.1607C4.47927 9.18796 4.42476 9.21522 4.36116 9.23339C4.35207 9.23339 4.3339 9.23339 4.32481 9.24248C4.2703 9.25156 4.2067 9.26065 4.15218 9.26973H4.1431C4.1431 9.26973 4.13401 9.26973 4.12493 9.26973C4.07041 9.26973 4.0159 9.26065 3.96138 9.25156C3.9523 9.25156 3.94321 9.25156 3.93413 9.25156C3.87961 9.23339 3.8251 9.21522 3.77058 9.18796C3.77058 9.18796 3.7615 9.18796 3.75241 9.18796L0.399772 7.2527C0.163542 7.11641 0.00908422 6.86201 0.00908422 6.58035V2.70982C0.00908422 2.42817 0.154456 2.17376 0.399772 2.03748L3.75241 0.102215C3.98864 -0.0340715 4.28847 -0.0340715 4.5247 0.102215L7.87734 2.03748C7.87734 2.03748 7.87734 2.03748 7.88643 2.03748C7.94094 2.06474 7.98637 2.10108 8.0318 2.14651C8.0318 2.14651 8.04088 2.15559 8.04997 2.16468C8.08631 2.20102 8.12265 2.24645 8.14991 2.29188C8.14991 2.29188 8.159 2.30097 8.159 2.31914C8.18626 2.37365 8.21351 2.42817 8.2226 2.48268C8.2226 2.49177 8.2226 2.50994 8.23168 2.51902C8.24077 2.57354 8.25894 2.63714 8.25894 2.70074V4.636C8.25894 5.38103 8.65872 6.08064 9.3038 6.45315C9.94889 6.82567 10.7575 6.82567 11.4026 6.45315L13.0744 5.48098C13.1289 5.45372 13.1834 5.42646 13.247 5.40829C13.2561 5.40829 13.2743 5.40829 13.2834 5.39921C13.3379 5.39012 13.4015 5.38103 13.456 5.37195H13.4832C13.5378 5.37195 13.5923 5.38103 13.6468 5.39012C13.6559 5.39012 13.665 5.39012 13.674 5.39012C13.7286 5.40829 13.7831 5.42646 13.8376 5.45372C13.8376 5.45372 13.8467 5.45372 13.8558 5.45372L17.2084 7.38898C17.4446 7.52527 17.5991 7.77967 17.5991 8.06133V11.9319C17.5991 12.2135 17.4537 12.4679 17.2084 12.6042L13.8558 14.5395C13.8558 14.5395 13.8467 14.5395 13.8376 14.5395C13.7831 14.5667 13.7286 14.594 13.674 14.6031C13.665 14.6031 13.6559 14.6031 13.6468 14.6031C13.5923 14.6122 13.5378 14.6212 13.4832 14.6212C13.4832 14.6212 13.4742 14.6212 13.4651 14.6212C13.4106 14.6212 13.347 14.6212 13.2924 14.594C13.2834 14.594 13.2652 14.594 13.2561 14.5849C13.2016 14.5667 13.138 14.5486 13.0835 14.5122L11.4117 13.54C10.7666 13.1675 9.95798 13.1675 9.31289 13.54C8.6678 13.9125 8.26803 14.6122 8.26803 15.3572V17.2924C8.26803 17.356 8.25894 17.4196 8.24077 17.4742C8.24077 17.4832 8.24077 17.5014 8.23168 17.5105C8.21351 17.565 8.19534 17.6195 8.16809 17.674C8.16809 17.674 8.159 17.6922 8.14991 17.7013C8.12265 17.7467 8.08631 17.7922 8.04997 17.8285C8.04997 17.8285 8.04088 17.8376 8.0318 17.8467C7.98637 17.8921 7.94094 17.9284 7.88643 17.9557C7.88643 17.9557 7.88643 17.9557 7.87734 17.9557L4.5247 19.891C4.40659 19.9637 4.2703 20 4.13401 20C3.99773 20 3.86144 19.9637 3.74333 19.891L0.390687 17.9557C0.154458 17.8194 0 17.565 0 17.2834V13.4128C0 13.1312 0.145372 12.8768 0.390687 12.7405L3.74333 10.8052C3.74333 10.8052 3.75241 10.8052 3.7615 10.8052C3.81601 10.778 3.87053 10.7507 3.92504 10.7416C3.92504 10.7416 3.94321 10.7416 3.9523 10.7416C4.00681 10.7235 4.06133 10.7235 4.11584 10.7235H4.1431C4.19761 10.7235 4.26121 10.7325 4.31573 10.7507C4.32481 10.7507 4.34298 10.7507 4.35207 10.7507C4.40658 10.7689 4.47019 10.7871 4.5247 10.8234L6.19648 11.7956C6.84157 12.1681 7.6502 12.1681 8.29528 11.7956C8.94037 11.4231 9.34015 10.7235 9.34015 9.97842C9.34015 9.23339 8.94037 8.53379 8.29528 8.16127V8.15219L8.30437 8.18853Z" fill="currentColor"></path><path d="M67.9567 7.64393C68.3834 7.06793 69.4714 6.49193 70.6234 6.49193C73.8447 6.49193 75.21 8.81726 75.21 11.5479V17.3933C75.21 17.4573 75.1674 17.4999 75.1034 17.4999H73.0127C72.9487 17.4999 72.906 17.4573 72.906 17.3933V11.5479C72.906 10.0973 72.202 8.58259 70.3034 8.58259C68.5754 8.58259 67.722 9.96926 67.722 11.4413V17.3933C67.722 17.4573 67.6794 17.4999 67.6154 17.4999H65.546C65.482 17.4999 65.4394 17.4573 65.4394 17.3933V6.81193C65.4394 6.74793 65.482 6.70526 65.546 6.70526H67.3594C67.4447 6.70526 67.4874 6.74793 67.5087 6.81193L67.722 7.60126C67.7647 7.75059 67.8927 7.72926 67.9567 7.64393Z" fill="currentColor"></path><path d="M62.8545 17.5H60.7852C60.7212 17.5 60.6785 17.4573 60.6785 17.3933V6.81201C60.6785 6.74801 60.7212 6.70534 60.7852 6.70534H62.8545C62.9185 6.70534 62.9612 6.74801 62.9612 6.81201V17.3933C62.9612 17.4573 62.9185 17.5 62.8545 17.5ZM63.0039 5.44668H60.6572C60.5932 5.44668 60.5505 5.40401 60.5505 5.34001V2.95068C60.5505 2.88668 60.5932 2.84401 60.6572 2.84401H63.0039C63.0679 2.84401 63.1105 2.88668 63.1105 2.95068V5.34001C63.1105 5.40401 63.0679 5.44668 63.0039 5.44668Z" fill="currentColor"></path><path d="M54.4259 15.2385L57.1139 6.83321C57.1565 6.72654 57.2419 6.70521 57.3059 6.70521H59.4605C59.5245 6.70521 59.5885 6.74788 59.5458 6.85454L55.9832 17.3932C55.9619 17.4572 55.9192 17.4999 55.8552 17.4999H52.7832C52.7192 17.4999 52.6765 17.4572 52.6552 17.3932L49.0712 6.85454C49.0285 6.74788 49.0712 6.70521 49.1565 6.70521H51.3539C51.4179 6.70521 51.5032 6.74788 51.5245 6.83321L54.2125 15.2385C54.2552 15.3665 54.3832 15.3665 54.4259 15.2385Z" fill="currentColor"></path><path d="M48.9022 12.9133C48.8808 12.9773 48.8168 13.0199 48.7528 13.0199H41.0942C41.0302 13.0199 40.9875 13.0626 40.9875 13.1266C40.9875 14.4919 42.0755 15.6439 43.7822 15.6439C44.9982 15.6439 45.8088 15.1533 46.1715 14.4066C46.2142 14.3213 46.2568 14.2999 46.3422 14.2999H48.4755C48.5395 14.2999 48.6462 14.2999 48.6035 14.4706C48.0915 16.4973 46.1928 17.7133 43.7822 17.7133C40.6248 17.7133 38.5768 15.4306 38.5768 12.1026C38.5768 8.75326 40.5608 6.49193 43.7822 6.49193C47.0035 6.49193 48.9875 8.83859 48.9875 12.1666C48.9875 12.4866 48.9448 12.7213 48.9022 12.9133ZM41.0942 11.0999H46.4062C46.4702 11.0999 46.5128 11.0573 46.5128 10.9933C46.5128 9.96926 45.7022 8.58259 43.7822 8.58259C41.8835 8.58259 40.9875 10.0759 40.9875 10.9933C40.9875 11.0573 41.0302 11.0999 41.0942 11.0999Z" fill="currentColor"></path><path d="M30.715 17.4999H25.2324C25.1684 17.4999 25.1257 17.4573 25.1257 17.3932V2.58792C25.1257 2.52392 25.1684 2.48125 25.2324 2.48125H30.715C35.2164 2.48125 37.4137 5.65992 37.4137 10.1399C37.4137 14.6626 35.2164 17.4999 30.715 17.4999ZM27.515 15.4306H30.715C33.4244 15.4306 35.0243 13.5746 35.0243 10.1399C35.0243 6.74792 33.4244 4.57192 30.715 4.57192H27.515C27.451 4.57192 27.4084 4.61458 27.4084 4.67858V15.3239C27.4084 15.3879 27.451 15.4306 27.515 15.4306Z" fill="currentColor"></path></svg>
+  <text class="name mid" x="755" y="212">One session per site</text>
+  <text class="s mid" x="755" y="240">build-source skill</text>
+  <text class="s mid" x="755" y="260">reports its stage</text>
+  <rect class="chip" x="686" y="284" width="138" height="26" rx="13"/>
+  <text class="ct" x="755" y="302">Devin v3 API</text>
+
+  <rect class="tile" x="960" y="90" width="210" height="240" rx="22"/>
+  <circle class="disc" cx="1065" cy="148" r="34"/>
+  <svg class="ico" x="1047" y="130" width="36" height="36" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+  <text class="name mid" x="1065" y="212">GitHub</text>
+  <text class="s mid" x="1065" y="240">Branch and PR per site</text>
+  <text class="s mid" x="1065" y="260">tests + gate on the PR</text>
+  <rect class="chip" x="1001" y="284" width="128" height="26" rx="13"/>
+  <svg class="ico" x="1015" y="290" width="14" height="14" viewBox="0 0 24 24"><path d="M10.984 13.836a.5.5 0 0 1-.353-.146l-.745-.743a.5.5 0 1 1 .706-.708l.392.391 1.181-1.18a.5.5 0 0 1 .708.707l-1.535 1.533a.504.504 0 0 1-.354.146zm9.353-.147l1.534-1.532a.5.5 0 0 0-.707-.707l-1.181 1.18-.392-.391a.5.5 0 1 0-.706.708l.746.743a.497.497 0 0 0 .706-.001zM4.527 7.452l2.557-1.585A1 1 0 0 0 7.09 4.17L4.533 2.56A1 1 0 0 0 3 3.406v3.196a1.001 1.001 0 0 0 1.527.85zm2.03-2.436L4 6.602V3.406l2.557 1.61zM24 12.5c0 1.93-1.57 3.5-3.5 3.5a3.503 3.503 0 0 1-3.46-3h-2.08a3.503 3.503 0 0 1-3.46 3 3.502 3.502 0 0 1-3.46-3h-.558c-.972 0-1.85-.399-2.482-1.042V17c0 1.654 1.346 3 3 3h.04c.244-1.693 1.7-3 3.46-3 1.93 0 3.5 1.57 3.5 3.5S13.43 24 11.5 24a3.502 3.502 0 0 1-3.46-3H8c-2.206 0-4-1.794-4-4V9.899A5.008 5.008 0 0 1 0 5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.005 5.005 0 0 1-4.952 4.998A2.482 2.482 0 0 0 7.482 12h.558c.244-1.693 1.7-3 3.46-3a3.502 3.502 0 0 1 3.46 3h2.08a3.503 3.503 0 0 1 3.46-3c1.93 0 3.5 1.57 3.5 3.5zm-15 8c0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5-1.122-2.5-2.5-2.5S9 19.122 9 20.5zM5 9c2.206 0 4-1.794 4-4S7.206 1 5 1 1 2.794 1 5s1.794 4 4 4zm9 3.5c0-1.378-1.122-2.5-2.5-2.5S9 11.122 9 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5zm9 0c0-1.378-1.122-2.5-2.5-2.5S18 11.122 18 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5zm-13 8a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0zm12 0c0 1.93-1.57 3.5-3.5 3.5a3.503 3.503 0 0 1-3.46-3.002c-.007.001-.013.005-.021.005l-.506.017h-.017a.5.5 0 0 1-.016-.999l.506-.017c.018-.002.035.006.052.007A3.503 3.503 0 0 1 20.5 17c1.93 0 3.5 1.57 3.5 3.5zm-1 0c0-1.378-1.122-2.5-2.5-2.5S18 19.122 18 20.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5z"/></svg>
+  <text class="s" x="1035" y="302">auto-merge</text>
+
+  <!-- arrows between tiles: requests on y=180, answers on y=240 -->
+  <path class="ln" d="M242 180H336" marker-end="url(#f1-a)"/>
+  <g class="badge"><circle cx="290" cy="180" r="13"/><text x="290" y="184">1</text></g>
+  <text class="lbl mid" x="290" y="160">search</text>
+  <path class="ln dash" d="M338 240H244" marker-end="url(#f1-a)"/>
+  <g class="badge"><circle cx="290" cy="240" r="13"/><text x="290" y="244">6</text></g>
+  <text class="lbl mid" x="290" y="273">updates</text>
+
+  <path class="ln devin" d="M552 180H646" marker-end="url(#f1-d)"/>
+  <g class="badge devin"><circle cx="600" cy="180" r="13"/><text x="600" y="184">2</text></g>
+  <text class="lbl mid devin" x="600" y="160">start</text>
+  <path class="ln devin dash" d="M648 240H554" marker-end="url(#f1-d)"/>
+  <g class="badge devin"><circle cx="600" cy="240" r="13"/><text x="600" y="244">3</text></g>
+  <text class="lbl mid devin" x="600" y="273">stage, note</text>
+
+  <path class="ln devin" d="M862 210H956" marker-end="url(#f1-d)"/>
+  <g class="badge devin"><circle cx="910" cy="210" r="13"/><text x="910" y="214">4</text></g>
+  <text class="lbl mid devin" x="910" y="190">push, PR</text>
+
+  <path class="ln" d="M1065 88V62Q1065 46 1049 46H461Q445 46 445 62V86" marker-end="url(#f1-a)"/>
+  <g class="badge"><circle cx="700" cy="46" r="13"/><text x="700" y="50">5</text></g>
+  <text class="lbl halo" x="722" y="50">gate the 2 files</text>
+
+  <!-- down to the sites -->
+  <path class="ln" d="M445 332V376H195V406" marker-end="url(#f1-a)"/>
+  <path class="ln" d="M445 376H555V406" marker-end="url(#f1-a)"/>
+  <g class="badge"><circle cx="445" cy="356" r="13"/><text x="445" y="360">7</text></g>
+  <text class="lbl" x="465" y="361">scrape</text>
+  <path class="ln refused dash" d="M520 332V352H960V406" marker-end="url(#f1-r)"/>
+  <text class="lbl refused halo" x="790" y="356">robots.txt says no</text>
+
+  <!-- three site tiles, all 150 high -->
+  <rect class="tile" x="30" y="410" width="330" height="150" rx="18"/>
+  <text class="t" x="52" y="442">Brand site first</text>
+  <text class="s" x="52" y="463">the whole catalog</text>
+  <rect class="chip pass" x="52" y="482" width="120" height="28" rx="14"/><text class="ct" x="112" y="501">barcel.com.mx</text>
+
+  <rect class="tile" x="390" y="410" width="330" height="150" rx="18"/>
+  <text class="t" x="412" y="442">Retailers</text>
+  <text class="s" x="412" y="463">one product page each</text>
+  <rect class="chip pass" x="412" y="482" width="84" height="28" rx="14"/><text class="ct" x="454" y="501">chedraui</text>
+  <rect class="chip" x="504" y="482" width="76" height="28" rx="14"/><text class="ct" x="542" y="501">walmart</text>
+  <rect class="chip pass" x="588" y="482" width="106" height="28" rx="14"/><text class="ct" x="641" y="501">officedepot</text>
+
+  <rect class="tile refused" x="750" y="410" width="420" height="150" rx="18"/>
+  <text class="t refused" x="772" y="442">Not collected</text>
+  <text class="s" x="772" y="463">they refuse AI agents</text>
+  <rect class="chip refused" x="772" y="482" width="70" height="28" rx="14"/><text class="ct" x="807" y="501">amazon</text>
+  <rect class="chip refused" x="850" y="482" width="112" height="28" rx="14"/><text class="ct" x="906" y="501">mercadolibre</text>
+  <rect class="chip refused" x="970" y="482" width="62" height="28" rx="14"/><text class="ct" x="1001" y="501">rappi</text>
+  <rect class="chip refused" x="1040" y="482" width="76" height="28" rx="14"/><text class="ct" x="1078" y="501">lacomer</text>
+  <rect class="chip refused" x="772" y="518" width="76" height="28" rx="14"/><text class="ct" x="810" y="537">soriana</text>
+</svg>
+    </div>
+    <ol class="steps">
+      <li><b>1</b><span>The app sends the scanned product. The backend searches, brand site first, and checks each site's robots.txt.</span></li>
+      <li class="devin"><b>2</b><span>For each allowed site with no scraper, the backend starts a Devin session: up to 4 at once, one per site.</span></li>
+      <li class="devin"><b>3</b><span>It polls each session every 12 s for its stage and note, which the app's build panel shows.</span></li>
+      <li class="devin"><b>4</b><span>Devin pushes a branch with two files, the scraper and its saved page, and opens a PR.</span></li>
+      <li><b>5</b><span>The backend copies those two files into a clean kit and runs the gate. A fail goes back to the same session.</span></li>
+      <li><b>6</b><span>On a pass the scraper goes live in the backend, and the app marks the site ready.</span></li>
+      <li><b>7</b><span>The backend scrapes the brand site and the retailer pages. Sites that refuse AI agents are listed, never fetched.</span></li>
+    </ol>
+    <figcaption>Green chips have a scraper in the kit. The others get one the first time someone scans a product
+    there.</figcaption>
+  </figure>
+</section>
+
+<!-- 2. One real build -->
+<section>
+  <div class="head"><span class="kicker">One real build</span><h2>Office Depot, from build request to live scraper in 2 min 51 s</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 230" role="img" aria-label="Timeline of the Office Depot build by Devin, to scale from the build request: the backend checked access and probed within 3 s; the Devin session started at 4 s, wrote the source by 57 s, saved the page as a fixture and ran its own gate until 2 min 14 s, opened the PR, reported CI green and the PR merged at 2 min 27 s, and finished at 2 min 40 s; the backend's gate passed 26 of 26 at 2 min 51 s and the scraper went live.">
+  <!-- lane labels -->
+  <svg class="ico" x="16" y="70" width="18" height="18" viewBox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>
+  <text class="t" x="42" y="84">Backend</text>
+  <svg class="ico" x="17" y="127" width="18" height="20" viewBox="0 0 18 20"><path d="M8.30437 8.18853C7.65928 7.81601 6.85065 7.81601 6.20556 8.18853L4.53379 9.1607C4.47927 9.18796 4.42476 9.21522 4.36116 9.23339C4.35207 9.23339 4.3339 9.23339 4.32481 9.24248C4.2703 9.25156 4.2067 9.26065 4.15218 9.26973H4.1431C4.1431 9.26973 4.13401 9.26973 4.12493 9.26973C4.07041 9.26973 4.0159 9.26065 3.96138 9.25156C3.9523 9.25156 3.94321 9.25156 3.93413 9.25156C3.87961 9.23339 3.8251 9.21522 3.77058 9.18796C3.77058 9.18796 3.7615 9.18796 3.75241 9.18796L0.399772 7.2527C0.163542 7.11641 0.00908422 6.86201 0.00908422 6.58035V2.70982C0.00908422 2.42817 0.154456 2.17376 0.399772 2.03748L3.75241 0.102215C3.98864 -0.0340715 4.28847 -0.0340715 4.5247 0.102215L7.87734 2.03748C7.87734 2.03748 7.87734 2.03748 7.88643 2.03748C7.94094 2.06474 7.98637 2.10108 8.0318 2.14651C8.0318 2.14651 8.04088 2.15559 8.04997 2.16468C8.08631 2.20102 8.12265 2.24645 8.14991 2.29188C8.14991 2.29188 8.159 2.30097 8.159 2.31914C8.18626 2.37365 8.21351 2.42817 8.2226 2.48268C8.2226 2.49177 8.2226 2.50994 8.23168 2.51902C8.24077 2.57354 8.25894 2.63714 8.25894 2.70074V4.636C8.25894 5.38103 8.65872 6.08064 9.3038 6.45315C9.94889 6.82567 10.7575 6.82567 11.4026 6.45315L13.0744 5.48098C13.1289 5.45372 13.1834 5.42646 13.247 5.40829C13.2561 5.40829 13.2743 5.40829 13.2834 5.39921C13.3379 5.39012 13.4015 5.38103 13.456 5.37195H13.4832C13.5378 5.37195 13.5923 5.38103 13.6468 5.39012C13.6559 5.39012 13.665 5.39012 13.674 5.39012C13.7286 5.40829 13.7831 5.42646 13.8376 5.45372C13.8376 5.45372 13.8467 5.45372 13.8558 5.45372L17.2084 7.38898C17.4446 7.52527 17.5991 7.77967 17.5991 8.06133V11.9319C17.5991 12.2135 17.4537 12.4679 17.2084 12.6042L13.8558 14.5395C13.8558 14.5395 13.8467 14.5395 13.8376 14.5395C13.7831 14.5667 13.7286 14.594 13.674 14.6031C13.665 14.6031 13.6559 14.6031 13.6468 14.6031C13.5923 14.6122 13.5378 14.6212 13.4832 14.6212C13.4832 14.6212 13.4742 14.6212 13.4651 14.6212C13.4106 14.6212 13.347 14.6212 13.2924 14.594C13.2834 14.594 13.2652 14.594 13.2561 14.5849C13.2016 14.5667 13.138 14.5486 13.0835 14.5122L11.4117 13.54C10.7666 13.1675 9.95798 13.1675 9.31289 13.54C8.6678 13.9125 8.26803 14.6122 8.26803 15.3572V17.2924C8.26803 17.356 8.25894 17.4196 8.24077 17.4742C8.24077 17.4832 8.24077 17.5014 8.23168 17.5105C8.21351 17.565 8.19534 17.6195 8.16809 17.674C8.16809 17.674 8.159 17.6922 8.14991 17.7013C8.12265 17.7467 8.08631 17.7922 8.04997 17.8285C8.04997 17.8285 8.04088 17.8376 8.0318 17.8467C7.98637 17.8921 7.94094 17.9284 7.88643 17.9557C7.88643 17.9557 7.88643 17.9557 7.87734 17.9557L4.5247 19.891C4.40659 19.9637 4.2703 20 4.13401 20C3.99773 20 3.86144 19.9637 3.74333 19.891L0.390687 17.9557C0.154458 17.8194 0 17.565 0 17.2834V13.4128C0 13.1312 0.145372 12.8768 0.390687 12.7405L3.74333 10.8052C3.74333 10.8052 3.75241 10.8052 3.7615 10.8052C3.81601 10.778 3.87053 10.7507 3.92504 10.7416C3.92504 10.7416 3.94321 10.7416 3.9523 10.7416C4.00681 10.7235 4.06133 10.7235 4.11584 10.7235H4.1431C4.19761 10.7235 4.26121 10.7325 4.31573 10.7507C4.32481 10.7507 4.34298 10.7507 4.35207 10.7507C4.40658 10.7689 4.47019 10.7871 4.5247 10.8234L6.19648 11.7956C6.84157 12.1681 7.6502 12.1681 8.29528 11.7956C8.94037 11.4231 9.34015 10.7235 9.34015 9.97842C9.34015 9.23339 8.94037 8.53379 8.29528 8.16127V8.15219L8.30437 8.18853Z"/></svg>
+  <text class="t" x="42" y="138">Devin</text>
+  <text class="s" x="42" y="155" style="font-size:11.5px">one session</text>
+
+  <!-- grid and axis: 5.5 px per second from the build request at x=172 -->
+  <path class="grid" d="M337 56V176M502 56V176M667 56V176M832 56V176M997 56V176"/>
+  <path class="axis" d="M150 180H1170M172 180V186M337 180V186M502 180V186M667 180V186M832 180V186M997 180V186"/>
+  <g class="s m mid">
+    <text x="172" y="204">0 s</text><text x="337" y="204">30 s</text><text x="502" y="204">1 min</text>
+    <text x="667" y="204">1 min 30 s</text><text x="832" y="204">2 min</text><text x="997" y="204">2 min 30 s</text>
+  </g>
+
+  <!-- backend lane -->
+  <rect class="seg be" x="172" y="68" width="16.5" height="28" rx="4"/>
+  <path class="ln devin dash thin" d="M194 82H1048"/>
+  <text class="lbl devin halo mid" x="620" y="86">polls the Devin session every 12 s and shows each note in the app</text>
+  <rect class="seg ok" x="1052" y="68" width="60.5" height="28" rx="4"/>
+  <rect class="seg be" x="1116" y="68" width="8.5" height="28" rx="3"/>
+  <text class="lbl" x="172" y="42">build request · access + probe</text>
+  <path class="ln thin" d="M178 46V66"/>
+  <text class="lbl pass end" x="1082" y="40">backend gate passes 26/26</text>
+  <path class="ln pass thin" d="M1082 44V66"/>
+  <text class="lbl end" x="1120" y="22">2 min 51 s: live in the kit</text>
+  <path class="ln thin" d="M1120 26V66"/>
+
+  <!-- Devin lane: one block per reported stage -->
+  <rect class="seg alt" x="194" y="122" width="71.5" height="36" rx="5"/>
+  <text class="lbl devin mid" x="229.75" y="145" style="font-size:11.5px">start</text>
+  <rect class="seg" x="265.5" y="122" width="220" height="36" rx="5"/>
+  <text class="lbl devin mid" x="375.5" y="145">probe, write the source</text>
+  <rect class="seg alt" x="485.5" y="122" width="423.5" height="36" rx="5"/>
+  <text class="lbl devin mid" x="697.25" y="145">save the page as a fixture, run its own gate</text>
+  <rect class="seg" x="909" y="122" width="71.5" height="36" rx="5"/>
+  <text class="lbl devin mid" x="944.75" y="145">PR, CI</text>
+  <rect class="seg alt" x="980.5" y="122" width="71.5" height="36" rx="5"/>
+  <text class="lbl devin mid" x="1016.25" y="145">report</text>
+</svg>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2 min 51 s</b><span>build request to a live scraper</span></div>
+      <div class="stat ok"><b>26 / 26</b><span>backend gate, first attempt</span></div>
+      <div class="stat"><b>1 PR</b><span>opened by Devin, CI green, merged</span></div>
+      <div class="stat"><b>$22.00 MXN</b><span>Takis Fuego Barcel 56 gr, read from the page</span></div>
+    </div>
+    <figcaption>Drawn to scale from the build's record in Postgres (<code>build_events</code>). Devin's own gate passed
+    25 checks; the backend's gate reruns them on Devin's two files alone and adds one more, that nothing else changed.
+    The scraper reads the page's JSON-LD through the kit's jsonld reader.</figcaption>
+  </figure>
+</section>
+
+<!-- 3. Build loop -->
+<section>
+  <div class="head"><span class="kicker">The build loop</span><h2>What happens to each site found</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 400" role="img" aria-label="Decision flow for one site: if robots.txt refuses, the site is Not collected and no session starts; if a scraper exists, it is available; otherwise a Devin session builds it and the gate decides; a fail goes back to the same session, up to 3 attempts; a third fail needs a person; an unreachable site is rerun once; a pass is merged and the site stays available for every later scan.">
+  <defs>
+    <marker id="f3-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f3-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f3-f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah fail" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f3-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah refused" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f3-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah pass" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <rect class="tile" x="20" y="150" width="130" height="52" rx="26"/>
+  <text class="t mid" x="85" y="181">Page found</text>
+  <path class="ln" d="M152 176H180" marker-end="url(#f3-a)"/>
+
+  <path class="tile" d="M184 176L270 116L356 176L270 236Z"/>
+  <text class="t mid" x="270" y="172">robots.txt</text><text class="t mid" x="270" y="191">allows?</text>
+  <path class="ln" d="M358 176H386" marker-end="url(#f3-a)"/><text class="lbl mid" x="372" y="166">yes</text>
+  <path class="ln refused" d="M270 238V288" marker-end="url(#f3-r)"/><text class="lbl refused" x="280" y="268">no</text>
+
+  <path class="tile" d="M390 176L470 118L550 176L470 234Z"/>
+  <text class="t mid" x="470" y="172">scraper</text><text class="t mid" x="470" y="191">exists?</text>
+  <path class="ln devin" d="M552 176H596" marker-end="url(#f3-d)"/><text class="lbl mid" x="574" y="166">no</text>
+  <path class="ln pass" d="M470 236V288" marker-end="url(#f3-p)"/><text class="lbl pass" x="480" y="268">yes</text>
+
+  <rect class="tile devin" x="600" y="124" width="200" height="104" rx="20"/>
+  <svg class="logo" x="643" y="142" width="114" height="30" viewBox="0 0 76 20"><path d="M8.30437 8.18853C7.65928 7.81601 6.85065 7.81601 6.20556 8.18853L4.53379 9.1607C4.47927 9.18796 4.42476 9.21522 4.36116 9.23339C4.35207 9.23339 4.3339 9.23339 4.32481 9.24248C4.2703 9.25156 4.2067 9.26065 4.15218 9.26973H4.1431C4.1431 9.26973 4.13401 9.26973 4.12493 9.26973C4.07041 9.26973 4.0159 9.26065 3.96138 9.25156C3.9523 9.25156 3.94321 9.25156 3.93413 9.25156C3.87961 9.23339 3.8251 9.21522 3.77058 9.18796C3.77058 9.18796 3.7615 9.18796 3.75241 9.18796L0.399772 7.2527C0.163542 7.11641 0.00908422 6.86201 0.00908422 6.58035V2.70982C0.00908422 2.42817 0.154456 2.17376 0.399772 2.03748L3.75241 0.102215C3.98864 -0.0340715 4.28847 -0.0340715 4.5247 0.102215L7.87734 2.03748C7.87734 2.03748 7.87734 2.03748 7.88643 2.03748C7.94094 2.06474 7.98637 2.10108 8.0318 2.14651C8.0318 2.14651 8.04088 2.15559 8.04997 2.16468C8.08631 2.20102 8.12265 2.24645 8.14991 2.29188C8.14991 2.29188 8.159 2.30097 8.159 2.31914C8.18626 2.37365 8.21351 2.42817 8.2226 2.48268C8.2226 2.49177 8.2226 2.50994 8.23168 2.51902C8.24077 2.57354 8.25894 2.63714 8.25894 2.70074V4.636C8.25894 5.38103 8.65872 6.08064 9.3038 6.45315C9.94889 6.82567 10.7575 6.82567 11.4026 6.45315L13.0744 5.48098C13.1289 5.45372 13.1834 5.42646 13.247 5.40829C13.2561 5.40829 13.2743 5.40829 13.2834 5.39921C13.3379 5.39012 13.4015 5.38103 13.456 5.37195H13.4832C13.5378 5.37195 13.5923 5.38103 13.6468 5.39012C13.6559 5.39012 13.665 5.39012 13.674 5.39012C13.7286 5.40829 13.7831 5.42646 13.8376 5.45372C13.8376 5.45372 13.8467 5.45372 13.8558 5.45372L17.2084 7.38898C17.4446 7.52527 17.5991 7.77967 17.5991 8.06133V11.9319C17.5991 12.2135 17.4537 12.4679 17.2084 12.6042L13.8558 14.5395C13.8558 14.5395 13.8467 14.5395 13.8376 14.5395C13.7831 14.5667 13.7286 14.594 13.674 14.6031C13.665 14.6031 13.6559 14.6031 13.6468 14.6031C13.5923 14.6122 13.5378 14.6212 13.4832 14.6212C13.4832 14.6212 13.4742 14.6212 13.4651 14.6212C13.4106 14.6212 13.347 14.6212 13.2924 14.594C13.2834 14.594 13.2652 14.594 13.2561 14.5849C13.2016 14.5667 13.138 14.5486 13.0835 14.5122L11.4117 13.54C10.7666 13.1675 9.95798 13.1675 9.31289 13.54C8.6678 13.9125 8.26803 14.6122 8.26803 15.3572V17.2924C8.26803 17.356 8.25894 17.4196 8.24077 17.4742C8.24077 17.4832 8.24077 17.5014 8.23168 17.5105C8.21351 17.565 8.19534 17.6195 8.16809 17.674C8.16809 17.674 8.159 17.6922 8.14991 17.7013C8.12265 17.7467 8.08631 17.7922 8.04997 17.8285C8.04997 17.8285 8.04088 17.8376 8.0318 17.8467C7.98637 17.8921 7.94094 17.9284 7.88643 17.9557C7.88643 17.9557 7.88643 17.9557 7.87734 17.9557L4.5247 19.891C4.40659 19.9637 4.2703 20 4.13401 20C3.99773 20 3.86144 19.9637 3.74333 19.891L0.390687 17.9557C0.154458 17.8194 0 17.565 0 17.2834V13.4128C0 13.1312 0.145372 12.8768 0.390687 12.7405L3.74333 10.8052C3.74333 10.8052 3.75241 10.8052 3.7615 10.8052C3.81601 10.778 3.87053 10.7507 3.92504 10.7416C3.92504 10.7416 3.94321 10.7416 3.9523 10.7416C4.00681 10.7235 4.06133 10.7235 4.11584 10.7235H4.1431C4.19761 10.7235 4.26121 10.7325 4.31573 10.7507C4.32481 10.7507 4.34298 10.7507 4.35207 10.7507C4.40658 10.7689 4.47019 10.7871 4.5247 10.8234L6.19648 11.7956C6.84157 12.1681 7.6502 12.1681 8.29528 11.7956C8.94037 11.4231 9.34015 10.7235 9.34015 9.97842C9.34015 9.23339 8.94037 8.53379 8.29528 8.16127V8.15219L8.30437 8.18853Z" fill="currentColor"></path><path d="M67.9567 7.64393C68.3834 7.06793 69.4714 6.49193 70.6234 6.49193C73.8447 6.49193 75.21 8.81726 75.21 11.5479V17.3933C75.21 17.4573 75.1674 17.4999 75.1034 17.4999H73.0127C72.9487 17.4999 72.906 17.4573 72.906 17.3933V11.5479C72.906 10.0973 72.202 8.58259 70.3034 8.58259C68.5754 8.58259 67.722 9.96926 67.722 11.4413V17.3933C67.722 17.4573 67.6794 17.4999 67.6154 17.4999H65.546C65.482 17.4999 65.4394 17.4573 65.4394 17.3933V6.81193C65.4394 6.74793 65.482 6.70526 65.546 6.70526H67.3594C67.4447 6.70526 67.4874 6.74793 67.5087 6.81193L67.722 7.60126C67.7647 7.75059 67.8927 7.72926 67.9567 7.64393Z" fill="currentColor"></path><path d="M62.8545 17.5H60.7852C60.7212 17.5 60.6785 17.4573 60.6785 17.3933V6.81201C60.6785 6.74801 60.7212 6.70534 60.7852 6.70534H62.8545C62.9185 6.70534 62.9612 6.74801 62.9612 6.81201V17.3933C62.9612 17.4573 62.9185 17.5 62.8545 17.5ZM63.0039 5.44668H60.6572C60.5932 5.44668 60.5505 5.40401 60.5505 5.34001V2.95068C60.5505 2.88668 60.5932 2.84401 60.6572 2.84401H63.0039C63.0679 2.84401 63.1105 2.88668 63.1105 2.95068V5.34001C63.1105 5.40401 63.0679 5.44668 63.0039 5.44668Z" fill="currentColor"></path><path d="M54.4259 15.2385L57.1139 6.83321C57.1565 6.72654 57.2419 6.70521 57.3059 6.70521H59.4605C59.5245 6.70521 59.5885 6.74788 59.5458 6.85454L55.9832 17.3932C55.9619 17.4572 55.9192 17.4999 55.8552 17.4999H52.7832C52.7192 17.4999 52.6765 17.4572 52.6552 17.3932L49.0712 6.85454C49.0285 6.74788 49.0712 6.70521 49.1565 6.70521H51.3539C51.4179 6.70521 51.5032 6.74788 51.5245 6.83321L54.2125 15.2385C54.2552 15.3665 54.3832 15.3665 54.4259 15.2385Z" fill="currentColor"></path><path d="M48.9022 12.9133C48.8808 12.9773 48.8168 13.0199 48.7528 13.0199H41.0942C41.0302 13.0199 40.9875 13.0626 40.9875 13.1266C40.9875 14.4919 42.0755 15.6439 43.7822 15.6439C44.9982 15.6439 45.8088 15.1533 46.1715 14.4066C46.2142 14.3213 46.2568 14.2999 46.3422 14.2999H48.4755C48.5395 14.2999 48.6462 14.2999 48.6035 14.4706C48.0915 16.4973 46.1928 17.7133 43.7822 17.7133C40.6248 17.7133 38.5768 15.4306 38.5768 12.1026C38.5768 8.75326 40.5608 6.49193 43.7822 6.49193C47.0035 6.49193 48.9875 8.83859 48.9875 12.1666C48.9875 12.4866 48.9448 12.7213 48.9022 12.9133ZM41.0942 11.0999H46.4062C46.4702 11.0999 46.5128 11.0573 46.5128 10.9933C46.5128 9.96926 45.7022 8.58259 43.7822 8.58259C41.8835 8.58259 40.9875 10.0759 40.9875 10.9933C40.9875 11.0573 41.0302 11.0999 41.0942 11.0999Z" fill="currentColor"></path><path d="M30.715 17.4999H25.2324C25.1684 17.4999 25.1257 17.4573 25.1257 17.3932V2.58792C25.1257 2.52392 25.1684 2.48125 25.2324 2.48125H30.715C35.2164 2.48125 37.4137 5.65992 37.4137 10.1399C37.4137 14.6626 35.2164 17.4999 30.715 17.4999ZM27.515 15.4306H30.715C33.4244 15.4306 35.0243 13.5746 35.0243 10.1399C35.0243 6.74792 33.4244 4.57192 30.715 4.57192H27.515C27.451 4.57192 27.4084 4.61458 27.4084 4.67858V15.3239C27.4084 15.3879 27.451 15.4306 27.515 15.4306Z" fill="currentColor"></path></svg>
+  <text class="s mid" x="700" y="200">session · attempt n of 3</text>
+  <path class="ln devin" d="M802 176H868" marker-end="url(#f3-d)"/><text class="lbl mid devin" x="835" y="166">branch</text>
+
+  <circle class="tile" cx="930" cy="176" r="58" style="stroke-width:2"/>
+  <text class="name mid" x="930" y="174">Gate</text><text class="s mid" x="930" y="194">code decides</text>
+  <path class="ln" d="M906 122C900 86 960 86 954 122" marker-end="url(#f3-a)"/>
+  <text class="lbl mid" x="930" y="78">unreachable: rerun once</text>
+  <path class="ln pass" d="M990 176H1036" marker-end="url(#f3-p)"/><text class="lbl mid pass" x="1013" y="166">pass</text>
+  <path class="ln fail" d="M916 232C900 300 716 300 704 232" marker-end="url(#f3-f)"/>
+  <text class="lbl mid fail" x="810" y="308">fail: the report goes back</text>
+  <text class="s mid" x="810" y="327">same session, up to 3 attempts</text>
+  <path class="ln fail" d="M972 216L1038 294" marker-end="url(#f3-f)"/><text class="lbl fail" x="1012" y="244">3rd fail</text>
+
+  <rect class="tile pass" x="1040" y="150" width="140" height="52" rx="16"/>
+  <text class="t pass" x="1058" y="173">Merged</text><text class="s" x="1058" y="191">live in the kit</text>
+  <rect class="tile refused" x="200" y="290" width="140" height="56" rx="16"/>
+  <text class="t refused" x="216" y="314">Not collected</text><text class="s" x="216" y="333">no session started</text>
+  <rect class="tile pass" x="400" y="290" width="140" height="56" rx="16"/>
+  <text class="t pass" x="416" y="314">Available</text><text class="s" x="416" y="333">scrape any time</text>
+  <rect class="tile fail" x="1040" y="296" width="140" height="56" rx="16"/>
+  <text class="t fail" x="1056" y="320">Needs a person</text><text class="s" x="1056" y="339">report kept</text>
+
+  <path class="ln pass dash" d="M1182 176H1192V384H470V350" marker-end="url(#f3-p)"/>
+  <text class="lbl pass halo" x="760" y="388">the next scan of this site needs no build</text>
+</svg>
+    </div>
+    <figcaption>A refused site never reaches Devin. A build gets three attempts in one Devin session; a session that
+    reports the kit itself needs a change, or that the site blocked it, also goes to a person. A site the gate cannot
+    reach gets one rerun and is never blamed on the code.</figcaption>
+  </figure>
+</section>
+
+<!-- 3b. What Devin works with -->
+<section>
+  <div class="head"><span class="kicker">What Devin works with</span><h2>The session prompt and the scraper kit</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 624" role="img" aria-label="Left: the request the backend sent to start the Office Depot Devin session: a short prompt naming the build-source skill, the product page, the kind, the scanned product, the attempt, the gate command and the probe's report, plus repos, the structured output schema, an ACU cap and tags; a failed gate goes to the same session as a message. Right: the scraper kit in the repo: the skill, the trusted kit and tests that Devin never edits, the output schema, and the only two paths Devin writes, sources/S.py and fixtures/S/. Below, the whole Office Depot source: a few constants and one call to a known reader.">
+  <defs>
+    <marker id="f7-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <!-- left: what the backend sends to start a session -->
+  <text class="name" x="30" y="30">Sent to Devin</text>
+  <text class="s m" x="30" y="50">POST /v3/organizations/{org}/sessions</text>
+
+  <rect class="tile" x="30" y="66" width="560" height="290" rx="16"/>
+  <text class="m devin" x="48" y="90">prompt</text>
+  <g class="m">
+    <text x="48" y="114">Use the build-source skill</text>
+    <text x="48" y="134">(.agents/skills/build-source/SKILL.md in the repo).</text>
+    <text x="48" y="162" style="font-weight:600">## This build</text>
+    <text x="48" y="184">- Product page: https://www.officedepot.com.mx/…/p/100275440</text>
+    <text x="48" y="206">- Kind: third_party (a retailer: a page-only source)</text>
+    <text x="48" y="228">- Scanned product: {"brand": "Takis", "productName": "Takis Fuego", …}</text>
+    <text x="48" y="250">- Attempt: 1 of 3</text>
+    <text x="48" y="272">- Gate command: uv run python -m kit gate &lt;SOURCE&gt; --live --product '…'</text>
+    <text x="48" y="298">The backend already probed the page (`kit probe`):</text>
+    <text x="48" y="320">{"access": {"status": "allowed", …}, "platform": …, "reader": "jsonld",</text>
+    <text x="55" y="340">"row": {"native_id": …, "title": …, "price": …, "url": …}, "notes": […]}</text>
+  </g>
+
+  <rect class="tile" x="30" y="370" width="274" height="50" rx="12"/>
+  <text class="m devin" x="48" y="391">repos</text><text class="s" x="48" y="410">DEVIN_REPO, this repository</text>
+  <rect class="tile" x="316" y="370" width="274" height="50" rx="12"/>
+  <text class="m devin" x="334" y="391">structured_output_schema</text><text class="s" x="334" y="410">stage · outcome · gate · pr_url</text>
+  <rect class="tile" x="30" y="430" width="274" height="50" rx="12"/>
+  <text class="m devin" x="48" y="451">max_acu_limit</text><text class="s" x="48" y="470">one cap for the whole build</text>
+  <rect class="tile" x="316" y="430" width="274" height="50" rx="12"/>
+  <text class="m devin" x="334" y="451">tags</text><text class="s" x="334" y="470">kit-source · the host · build:&lt;id&gt;</text>
+
+  <rect class="tile fail" x="30" y="494" width="560" height="116" rx="16"/>
+  <text class="t fail" x="48" y="518">On a failed gate: a message to the same session</text>
+  <g class="m">
+    <text x="48" y="540">Attempt 2 of 3. The backend ran the gate on your source and it failed.</text>
+    <text x="48" y="560">This report is the code's decision, not an opinion: fix what it names,</text>
+    <text x="48" y="580">keep everything else, run the gate again until it exits 0, then report.</text>
+  </g>
+  <text class="s" x="48" y="600">followed by the gate's report: every check, passed or not, with its detail</text>
+
+  <!-- the prompt points into the repo -->
+  <path class="ln devin thin" d="M592 124C622 124 626 114 656 114" marker-end="url(#f7-d)"/>
+  <path class="ln devin thin" d="M592 268C622 268 626 290 656 290" marker-end="url(#f7-d)"/>
+  <path class="ln devin thin" d="M592 395C622 395 626 322 656 322" marker-end="url(#f7-d)"/>
+
+  <!-- right: the repo Devin works in -->
+  <text class="name" x="650" y="30">The scraper kit</text>
+  <text class="s" x="650" y="50">scraper-kit/ in the repository</text>
+
+  <rect class="tile" x="650" y="66" width="520" height="334" rx="16"/>
+  <rect class="seg" x="662" y="342" width="496" height="52" rx="10"/>
+  <g class="m">
+    <text x="672" y="94" style="fill:var(--ink-2)">.agents/skills/</text>
+    <text x="687" y="118">build-source/SKILL.md</text>
+    <text x="672" y="150" style="fill:var(--ink-2)">scraper-kit/</text>
+    <text x="687" y="174">kit/ · tests/</text>
+    <text x="702" y="198">probe.py</text>
+    <text x="702" y="222">generic/</text>
+    <text x="702" y="246">http.py · robots.py</text>
+    <text x="702" y="270">capture.py</text>
+    <text x="702" y="294">gate.py · worker.py</text>
+    <text x="687" y="326">devin/output.schema.json</text>
+    <text class="devin" x="687" y="364" style="font-weight:600">sources/&lt;S&gt;.py</text>
+    <text class="devin" x="687" y="386" style="font-weight:600">fixtures/&lt;S&gt;/</text>
+  </g>
+  <g class="s">
+    <text x="890" y="118">steps, the never-list, PR template</text>
+    <text x="890" y="174" style="fill:var(--ink)">trusted: Devin never edits these</text>
+    <text x="890" y="198">which known reader fits a page</text>
+    <text x="890" y="222">Shopify · VTEX · JSON:API · JSON-LD · OG</text>
+    <text x="890" y="246">paced fetches · robots and AI opt-outs</text>
+    <text x="890" y="270">saved responses, replayed offline</text>
+    <text x="890" y="294">the one pass/fail · source runs apart</text>
+    <text x="890" y="326">what Devin reports back</text>
+  </g>
+  <text class="lbl devin" x="890" y="364">Devin writes: one file per site</text>
+  <text class="lbl devin" x="890" y="386">its saved page and expected values</text>
+
+  <!-- a whole source -->
+  <text class="lbl" x="650" y="432">A whole source, abridged: sources/officedepot_mx.py, written by Devin</text>
+  <rect class="tile devin" x="650" y="444" width="520" height="166" rx="16"/>
+  <g class="m">
+    <text x="672" y="470">SOURCE = "officedepot_mx"</text>
+    <text x="672" y="488">ORIGIN = "https://www.officedepot.com.mx"</text>
+    <text x="672" y="506">KIND = "third_party"</text>
+    <text x="672" y="524">INTERVAL = 2</text>
+    <text x="672" y="542">CURRENCY = "MXN"</text>
+    <text x="672" y="568">def page(response):</text>
+    <text x="701" y="586">return generic_page.read(response, CURRENCY)</text>
+  </g>
+</svg>
+    </div>
+    <figcaption>The request is the one the backend built for the Office Depot build (<code>backend/server/prompts.py</code>),
+    shortened where it shows …. The prompt carries only this build's facts; how to build lives in the skill, in the repo.
+    Devin may change only the two highlighted paths, and the backend's gate and CI refuse a PR that touches anything
+    else. Where the probe finds a known reader, a source is a few constants and one call to it.</figcaption>
+  </figure>
+</section>
+
+<!-- 4. Code decides -->
+<section>
+  <div class="head"><span class="kicker">Code decides</span><h2>Why Devin can't grade its own work</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 330" role="img" aria-label="Two ways to run the checks. Sharing a process, Devin's file runs beside the checks and can rewrite them, so a wrong fixture passes 13 of 13. In the gate, Devin's file runs in a separate child process that only returns rows, the checks run in the gate's own process, and the same wrong fixture fails 14 of 16.">
+  <defs>
+    <marker id="f4-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f4-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f4-f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah fail" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <!-- Sharing a process -->
+  <text class="name" x="20" y="26">Sharing a process</text>
+  <rect class="boundary" x="20" y="44" width="560" height="196" rx="22"/>
+  <text class="s" x="40" y="70">one process</text>
+  <rect class="tile" x="50" y="88" width="200" height="124" rx="18"/>
+  <g class="glyph"><path d="M120 116l5 5 9-10M140 116h40M120 136l5 5 9-10M140 136h40M120 156l5 5 9-10M140 156h40"/></g>
+  <text class="t mid" x="150" y="194">Checks</text>
+  <rect class="tile devin" x="350" y="88" width="200" height="124" rx="18"/>
+  <svg class="logo" x="432" y="104" width="36" height="36" viewBox="60 40 305 345"><path d="M70 159.333V91.3471C70 88.3592 71.594 85.5983 74.1816 84.1044L133.043 50.1205C135.631 48.6265 138.819 48.6265 141.407 50.1205L200.269 84.1044C202.856 85.5983 204.45 88.3592 204.45 91.3471V126.068C204.708 137.606 210.806 148.734 221.531 154.926C232.256 161.117 244.942 160.834 255.063 155.289L285.132 137.929C287.719 136.435 290.907 136.435 293.495 137.929L352.357 171.913C354.944 173.406 356.538 176.167 356.538 179.155V247.123C356.538 250.111 354.944 252.872 352.357 254.366L293.495 288.35C290.907 289.844 287.719 289.844 285.132 288.35L255.306 271.13C245.146 265.456 232.344 265.117 221.534 271.358C210.809 277.55 204.711 288.678 204.453 300.215V334.926C204.453 337.914 202.859 340.675 200.271 342.169L141.41 376.153C138.822 377.647 135.634 377.647 133.046 376.153L74.1845 342.169C71.5969 340.675 70.0028 337.914 70.0028 334.926V266.959C70.0029 263.971 71.5969 261.21 74.1845 259.716L133.046 225.732C135.634 224.238 138.822 224.238 141.41 225.732L171.547 243.132C181.656 248.638 194.306 248.906 205.005 242.729C215.815 236.488 221.922 225.231 222.088 213.595C221.83 202.057 215.732 189.737 205.008 183.545C194.283 177.353 181.597 177.636 171.476 183.181L141.269 200.72C138.67 202.229 135.461 202.228 132.864 200.716L74.1576 166.562C71.5835 165.065 70 162.311 70 159.333Z"/></svg>
+  <text class="t mid" x="450" y="172">Devin's file</text>
+  <text class="s m mid" x="450" y="194">sources/&lt;S&gt;.py</text>
+  <path class="ln fail" d="M348 150H254" style="stroke-width:2.6" marker-end="url(#f4-f)"/>
+  <text class="lbl mid fail" x="300" y="140">rewrites</text>
+  <circle cx="40" cy="282" r="16" class="tile fail"/>
+  <path class="glyph fail" d="M34 276l12 12M46 276l-12 12"/>
+  <text class="t fail" x="66" y="279">pass 13/13</text>
+  <text class="s" x="66" y="298">on a wrong fixture, so it would merge</text>
+
+  <!-- How the gate runs it -->
+  <text class="name" x="620" y="26">How the gate runs it</text>
+  <rect class="boundary" x="620" y="44" width="280" height="196" rx="22"/>
+  <text class="s" x="640" y="70">gate process</text>
+  <rect class="tile" x="650" y="88" width="220" height="124" rx="18"/>
+  <g class="glyph"><path d="M725 116l5 5 9-10M745 116h40M725 136l5 5 9-10M745 136h40M725 156l5 5 9-10M745 156h40"/></g>
+  <text class="t mid" x="760" y="194">Checks</text>
+  <rect class="boundary" x="960" y="44" width="220" height="196" rx="22" style="stroke-dasharray:6 5"/>
+  <text class="s" x="980" y="70">child process</text>
+  <rect class="tile devin" x="980" y="88" width="180" height="124" rx="18"/>
+  <svg class="logo" x="1052" y="104" width="36" height="36" viewBox="60 40 305 345"><path d="M70 159.333V91.3471C70 88.3592 71.594 85.5983 74.1816 84.1044L133.043 50.1205C135.631 48.6265 138.819 48.6265 141.407 50.1205L200.269 84.1044C202.856 85.5983 204.45 88.3592 204.45 91.3471V126.068C204.708 137.606 210.806 148.734 221.531 154.926C232.256 161.117 244.942 160.834 255.063 155.289L285.132 137.929C287.719 136.435 290.907 136.435 293.495 137.929L352.357 171.913C354.944 173.406 356.538 176.167 356.538 179.155V247.123C356.538 250.111 354.944 252.872 352.357 254.366L293.495 288.35C290.907 289.844 287.719 289.844 285.132 288.35L255.306 271.13C245.146 265.456 232.344 265.117 221.534 271.358C210.809 277.55 204.711 288.678 204.453 300.215V334.926C204.453 337.914 202.859 340.675 200.271 342.169L141.41 376.153C138.822 377.647 135.634 377.647 133.046 376.153L74.1845 342.169C71.5969 340.675 70.0028 337.914 70.0028 334.926V266.959C70.0029 263.971 71.5969 261.21 74.1845 259.716L133.046 225.732C135.634 224.238 138.822 224.238 141.41 225.732L171.547 243.132C181.656 248.638 194.306 248.906 205.005 242.729C215.815 236.488 221.922 225.231 222.088 213.595C221.83 202.057 215.732 189.737 205.008 183.545C194.283 177.353 181.597 177.636 171.476 183.181L141.269 200.72C138.67 202.229 135.461 202.228 132.864 200.716L74.1576 166.562C71.5835 165.065 70 162.311 70 159.333Z"/></svg>
+  <text class="t mid" x="1070" y="172">Devin's file</text>
+  <text class="s m mid" x="1070" y="194">runs only here</text>
+  <path class="ln" d="M872 128H976" marker-end="url(#f4-a)"/><text class="lbl mid" x="930" y="118">saved page</text>
+  <path class="ln devin" d="M978 172H874" marker-end="url(#f4-d)"/><text class="lbl mid devin" x="930" y="192">rows only</text>
+  <circle cx="640" cy="282" r="16" class="tile pass"/>
+  <path class="glyph pass" d="M632 282l6 6 11-12"/>
+  <text class="t" x="666" y="279">fail 14/16: <tspan style="fill:var(--pass)">caught</tspan></text>
+  <text class="s" x="666" y="298">the same wrong fixture, nothing merged</text>
+</svg>
+    </div>
+    <figcaption>The red arrow is what the split rules out. Devin's file runs only in a separate process
+    that hands back rows, and every check runs in the gate's own process. Row titles must also appear on a real
+    page, one of which the gate fetches itself. The separate process is not a sandbox.</figcaption>
+  </figure>
+</section>
+
+<!-- 5. Why Devin -->
+<section>
+  <div class="head"><span class="kicker">Why this is a good use of Devin</span><h2>Devin only spends where code can't</h2></div>
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 330" role="img" aria-label="The nine pages the first scan of Takis Fuego found: five refuse AI agents and are listed for free, one already has a scraper and costs nothing, three need a build. For those three the backend's probe already found a reader: VTEX for Chedraui, JSON-LD for Walmart and Office Depot, so Devin's job is to confirm it, save the page and pass the gate.">
+  <defs>
+    <marker id="f5-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+  <text class="lbl" x="30" y="30">The first scan of Takis Fuego found 9 pages</text>
+
+  <!-- nine site tiles, 120 wide, 10 apart -->
+  <g>
+    <rect class="tile refused" x="30" y="46" width="120" height="64" rx="12"/><text class="ct" x="90" y="83">amazon</text>
+    <rect class="tile refused" x="160" y="46" width="120" height="64" rx="12"/><text class="ct" x="220" y="83">mercadolibre</text>
+    <rect class="tile refused" x="290" y="46" width="120" height="64" rx="12"/><text class="ct" x="350" y="83">rappi</text>
+    <rect class="tile refused" x="420" y="46" width="120" height="64" rx="12"/><text class="ct" x="480" y="83">lacomer</text>
+    <rect class="tile refused" x="550" y="46" width="120" height="64" rx="12"/><text class="ct" x="610" y="83">soriana</text>
+    <rect class="tile pass" x="680" y="46" width="120" height="64" rx="12"/><text class="ct" x="740" y="83">barcel</text>
+    <rect class="tile devin" x="810" y="46" width="120" height="64" rx="12"/><text class="ct" x="870" y="83">chedraui</text>
+    <rect class="tile devin" x="940" y="46" width="120" height="64" rx="12"/><text class="ct" x="1000" y="83">walmart</text>
+    <rect class="tile devin" x="1070" y="46" width="120" height="64" rx="12"/><text class="ct" x="1130" y="83">officedepot</text>
+  </g>
+
+  <!-- brackets -->
+  <path class="ln refused thin" d="M30 126V134H670V126M350 134V144"/>
+  <text class="t refused mid" x="350" y="166">5 refuse AI agents</text>
+  <text class="s mid" x="350" y="186">listed with an official alternative · $0</text>
+  <path class="ln pass thin" d="M680 126V134H800V126M740 134V144"/>
+  <text class="t pass mid" x="740" y="166">1 has a scraper</text>
+  <text class="s mid" x="740" y="186">read straight away · $0</text>
+  <path class="ln devin thin" d="M810 126V134H1190V126M1000 134V144"/>
+  <text class="t devin mid" x="1000" y="166">3 need a build</text>
+  <text class="s mid" x="1000" y="186">one Devin session each, in parallel</text>
+
+  <!-- what the probe already knew -->
+  <path class="ln devin" d="M1000 198V222" marker-end="url(#f5-d)"/>
+  <rect class="chip devin" x="810" y="228" width="120" height="30" rx="15"/><text class="ct" x="870" y="248">probe: vtex</text>
+  <rect class="chip devin" x="940" y="228" width="120" height="30" rx="15"/><text class="ct" x="1000" y="248">probe: jsonld</text>
+  <rect class="chip devin" x="1070" y="228" width="120" height="30" rx="15"/><text class="ct" x="1130" y="248">probe: jsonld</text>
+  <text class="s end" x="1190" y="288">a known reader fits each, so Devin confirms it,</text>
+  <text class="s end" x="1190" y="308">saves the page and writes expected values from it</text>
+
+  <text class="name" x="30" y="248">3 of 9 pages need a build,</text>
+  <text class="name" x="30" y="272">and each build is paid for once.</text>
+  <text class="s" x="30" y="300">Once a site has a scraper, every later scan there costs nothing.</text>
+</svg>
+    </div>
+    <figcaption>From the recorded search for Takis Fuego 56 g and the backend's probes of each page. Every passed
+    build takes a session off later scans: with Chedraui and Office Depot in the kit, the same scan starts one, for
+    Walmart. Devin writes a custom reader only when no known one fits.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="card">
+<svg class="dg" viewBox="0 0 1200 340" role="img" aria-label="Devin's contract for one build: it is given one page URL, the scanned product, the backend's probe report and the build-source skill; it may change only two paths, the source file and its saved page, within an 8 ACU cap and with no credentials; it returns a branch and pull request, a live stage and note, and an outcome with its own gate run, which the backend then checks again.">
+  <defs>
+    <marker id="f6-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="f6-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah devin" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <text class="name" x="30" y="30">Given</text>
+  <rect class="tile" x="30" y="48" width="320" height="56" rx="14"/><text class="t" x="52" y="72">One product page</text><text class="s" x="52" y="92">never a whole site to explore</text>
+  <rect class="tile" x="30" y="114" width="320" height="56" rx="14"/><text class="t" x="52" y="138">The scanned product</text><text class="s" x="52" y="158">brand, name, size, barcode</text>
+  <rect class="tile" x="30" y="180" width="320" height="56" rx="14"/><text class="t" x="52" y="204">The probe's report</text><text class="s" x="52" y="224">which reader fits, robots verdict</text>
+  <rect class="tile" x="30" y="246" width="320" height="56" rx="14"/><text class="t" x="52" y="270">The build-source skill</text><text class="s" x="52" y="290">done = one command passes</text>
+
+  <path class="ln" d="M352 175H436" marker-end="url(#f6-a)"/>
+
+  <rect class="boundary" x="440" y="48" width="320" height="254" rx="22" style="stroke-dasharray:6 5"/>
+  <text class="s mid" x="600" y="40">may change only these two paths</text>
+  <rect class="tile devin" x="470" y="72" width="260" height="120" rx="18"/>
+  <svg class="logo" x="536" y="96" width="128" height="34" viewBox="0 0 76 20"><path d="M8.30437 8.18853C7.65928 7.81601 6.85065 7.81601 6.20556 8.18853L4.53379 9.1607C4.47927 9.18796 4.42476 9.21522 4.36116 9.23339C4.35207 9.23339 4.3339 9.23339 4.32481 9.24248C4.2703 9.25156 4.2067 9.26065 4.15218 9.26973H4.1431C4.1431 9.26973 4.13401 9.26973 4.12493 9.26973C4.07041 9.26973 4.0159 9.26065 3.96138 9.25156C3.9523 9.25156 3.94321 9.25156 3.93413 9.25156C3.87961 9.23339 3.8251 9.21522 3.77058 9.18796C3.77058 9.18796 3.7615 9.18796 3.75241 9.18796L0.399772 7.2527C0.163542 7.11641 0.00908422 6.86201 0.00908422 6.58035V2.70982C0.00908422 2.42817 0.154456 2.17376 0.399772 2.03748L3.75241 0.102215C3.98864 -0.0340715 4.28847 -0.0340715 4.5247 0.102215L7.87734 2.03748C7.87734 2.03748 7.87734 2.03748 7.88643 2.03748C7.94094 2.06474 7.98637 2.10108 8.0318 2.14651C8.0318 2.14651 8.04088 2.15559 8.04997 2.16468C8.08631 2.20102 8.12265 2.24645 8.14991 2.29188C8.14991 2.29188 8.159 2.30097 8.159 2.31914C8.18626 2.37365 8.21351 2.42817 8.2226 2.48268C8.2226 2.49177 8.2226 2.50994 8.23168 2.51902C8.24077 2.57354 8.25894 2.63714 8.25894 2.70074V4.636C8.25894 5.38103 8.65872 6.08064 9.3038 6.45315C9.94889 6.82567 10.7575 6.82567 11.4026 6.45315L13.0744 5.48098C13.1289 5.45372 13.1834 5.42646 13.247 5.40829C13.2561 5.40829 13.2743 5.40829 13.2834 5.39921C13.3379 5.39012 13.4015 5.38103 13.456 5.37195H13.4832C13.5378 5.37195 13.5923 5.38103 13.6468 5.39012C13.6559 5.39012 13.665 5.39012 13.674 5.39012C13.7286 5.40829 13.7831 5.42646 13.8376 5.45372C13.8376 5.45372 13.8467 5.45372 13.8558 5.45372L17.2084 7.38898C17.4446 7.52527 17.5991 7.77967 17.5991 8.06133V11.9319C17.5991 12.2135 17.4537 12.4679 17.2084 12.6042L13.8558 14.5395C13.8558 14.5395 13.8467 14.5395 13.8376 14.5395C13.7831 14.5667 13.7286 14.594 13.674 14.6031C13.665 14.6031 13.6559 14.6031 13.6468 14.6031C13.5923 14.6122 13.5378 14.6212 13.4832 14.6212C13.4832 14.6212 13.4742 14.6212 13.4651 14.6212C13.4106 14.6212 13.347 14.6212 13.2924 14.594C13.2834 14.594 13.2652 14.594 13.2561 14.5849C13.2016 14.5667 13.138 14.5486 13.0835 14.5122L11.4117 13.54C10.7666 13.1675 9.95798 13.1675 9.31289 13.54C8.6678 13.9125 8.26803 14.6122 8.26803 15.3572V17.2924C8.26803 17.356 8.25894 17.4196 8.24077 17.4742C8.24077 17.4832 8.24077 17.5014 8.23168 17.5105C8.21351 17.565 8.19534 17.6195 8.16809 17.674C8.16809 17.674 8.159 17.6922 8.14991 17.7013C8.12265 17.7467 8.08631 17.7922 8.04997 17.8285C8.04997 17.8285 8.04088 17.8376 8.0318 17.8467C7.98637 17.8921 7.94094 17.9284 7.88643 17.9557C7.88643 17.9557 7.88643 17.9557 7.87734 17.9557L4.5247 19.891C4.40659 19.9637 4.2703 20 4.13401 20C3.99773 20 3.86144 19.9637 3.74333 19.891L0.390687 17.9557C0.154458 17.8194 0 17.565 0 17.2834V13.4128C0 13.1312 0.145372 12.8768 0.390687 12.7405L3.74333 10.8052C3.74333 10.8052 3.75241 10.8052 3.7615 10.8052C3.81601 10.778 3.87053 10.7507 3.92504 10.7416C3.92504 10.7416 3.94321 10.7416 3.9523 10.7416C4.00681 10.7235 4.06133 10.7235 4.11584 10.7235H4.1431C4.19761 10.7235 4.26121 10.7325 4.31573 10.7507C4.32481 10.7507 4.34298 10.7507 4.35207 10.7507C4.40658 10.7689 4.47019 10.7871 4.5247 10.8234L6.19648 11.7956C6.84157 12.1681 7.6502 12.1681 8.29528 11.7956C8.94037 11.4231 9.34015 10.7235 9.34015 9.97842C9.34015 9.23339 8.94037 8.53379 8.29528 8.16127V8.15219L8.30437 8.18853Z" fill="currentColor"></path><path d="M67.9567 7.64393C68.3834 7.06793 69.4714 6.49193 70.6234 6.49193C73.8447 6.49193 75.21 8.81726 75.21 11.5479V17.3933C75.21 17.4573 75.1674 17.4999 75.1034 17.4999H73.0127C72.9487 17.4999 72.906 17.4573 72.906 17.3933V11.5479C72.906 10.0973 72.202 8.58259 70.3034 8.58259C68.5754 8.58259 67.722 9.96926 67.722 11.4413V17.3933C67.722 17.4573 67.6794 17.4999 67.6154 17.4999H65.546C65.482 17.4999 65.4394 17.4573 65.4394 17.3933V6.81193C65.4394 6.74793 65.482 6.70526 65.546 6.70526H67.3594C67.4447 6.70526 67.4874 6.74793 67.5087 6.81193L67.722 7.60126C67.7647 7.75059 67.8927 7.72926 67.9567 7.64393Z" fill="currentColor"></path><path d="M62.8545 17.5H60.7852C60.7212 17.5 60.6785 17.4573 60.6785 17.3933V6.81201C60.6785 6.74801 60.7212 6.70534 60.7852 6.70534H62.8545C62.9185 6.70534 62.9612 6.74801 62.9612 6.81201V17.3933C62.9612 17.4573 62.9185 17.5 62.8545 17.5ZM63.0039 5.44668H60.6572C60.5932 5.44668 60.5505 5.40401 60.5505 5.34001V2.95068C60.5505 2.88668 60.5932 2.84401 60.6572 2.84401H63.0039C63.0679 2.84401 63.1105 2.88668 63.1105 2.95068V5.34001C63.1105 5.40401 63.0679 5.44668 63.0039 5.44668Z" fill="currentColor"></path><path d="M54.4259 15.2385L57.1139 6.83321C57.1565 6.72654 57.2419 6.70521 57.3059 6.70521H59.4605C59.5245 6.70521 59.5885 6.74788 59.5458 6.85454L55.9832 17.3932C55.9619 17.4572 55.9192 17.4999 55.8552 17.4999H52.7832C52.7192 17.4999 52.6765 17.4572 52.6552 17.3932L49.0712 6.85454C49.0285 6.74788 49.0712 6.70521 49.1565 6.70521H51.3539C51.4179 6.70521 51.5032 6.74788 51.5245 6.83321L54.2125 15.2385C54.2552 15.3665 54.3832 15.3665 54.4259 15.2385Z" fill="currentColor"></path><path d="M48.9022 12.9133C48.8808 12.9773 48.8168 13.0199 48.7528 13.0199H41.0942C41.0302 13.0199 40.9875 13.0626 40.9875 13.1266C40.9875 14.4919 42.0755 15.6439 43.7822 15.6439C44.9982 15.6439 45.8088 15.1533 46.1715 14.4066C46.2142 14.3213 46.2568 14.2999 46.3422 14.2999H48.4755C48.5395 14.2999 48.6462 14.2999 48.6035 14.4706C48.0915 16.4973 46.1928 17.7133 43.7822 17.7133C40.6248 17.7133 38.5768 15.4306 38.5768 12.1026C38.5768 8.75326 40.5608 6.49193 43.7822 6.49193C47.0035 6.49193 48.9875 8.83859 48.9875 12.1666C48.9875 12.4866 48.9448 12.7213 48.9022 12.9133ZM41.0942 11.0999H46.4062C46.4702 11.0999 46.5128 11.0573 46.5128 10.9933C46.5128 9.96926 45.7022 8.58259 43.7822 8.58259C41.8835 8.58259 40.9875 10.0759 40.9875 10.9933C40.9875 11.0573 41.0302 11.0999 41.0942 11.0999Z" fill="currentColor"></path><path d="M30.715 17.4999H25.2324C25.1684 17.4999 25.1257 17.4573 25.1257 17.3932V2.58792C25.1257 2.52392 25.1684 2.48125 25.2324 2.48125H30.715C35.2164 2.48125 37.4137 5.65992 37.4137 10.1399C37.4137 14.6626 35.2164 17.4999 30.715 17.4999ZM27.515 15.4306H30.715C33.4244 15.4306 35.0243 13.5746 35.0243 10.1399C35.0243 6.74792 33.4244 4.57192 30.715 4.57192H27.515C27.451 4.57192 27.4084 4.61458 27.4084 4.67858V15.3239C27.4084 15.3879 27.451 15.4306 27.515 15.4306Z" fill="currentColor"></path></svg>
+  <text class="s mid" x="600" y="164">one site · one session</text>
+  <rect class="chip" x="470" y="206" width="125" height="28" rx="14"/><text class="ct" x="532" y="225">sources/&lt;S&gt;.py</text>
+  <rect class="chip" x="605" y="206" width="125" height="28" rx="14"/><text class="ct" x="667" y="225">fixtures/&lt;S&gt;/</text>
+  <text class="s mid" x="600" y="266">8 ACU cap · no credentials</text>
+  <text class="s mid" x="600" y="286">never asks; reports instead</text>
+
+  <path class="ln devin" d="M762 175H846" marker-end="url(#f6-d)"/>
+
+  <text class="name" x="850" y="30">Returns</text>
+  <rect class="tile" x="850" y="48" width="320" height="56" rx="14"/><text class="t" x="872" y="72">A branch and a PR</text><text class="s" x="872" y="92">the two files, nothing else</text>
+  <rect class="tile devin" x="850" y="114" width="320" height="56" rx="14"/><text class="t" x="872" y="138">Stage and note, live</text><text class="s" x="872" y="158">structured output the app shows</text>
+  <rect class="tile" x="850" y="180" width="320" height="56" rx="14"/><text class="t" x="872" y="204">Outcome and its gate run</text><text class="s" x="872" y="224">passed, kit_gap, blocked, failed</text>
+  <rect class="tile pass" x="850" y="246" width="320" height="56" rx="14"/><text class="t pass" x="872" y="270">Then the backend checks again</text><text class="s" x="872" y="290">its own gate decides, not Devin</text>
+</svg>
+    </div>
+    <figcaption>A small, checkable job is what lets sessions run unattended and in parallel. Devin's definition of
+    done is a command it can run itself, and the backend runs the same command again before anything goes live.</figcaption>
+  </figure>
+</section>
+
+<!-- Refused sites -->
+<section>
+  <div class="head"><span class="kicker">Refused sites</span><h2>Sites the app lists but never scrapes</h2></div>
+  <div class="sites">
+    <div class="site"><h3>amazon.com.mx</h3><span class="code">ai_opt_out</span><p>robots.txt blocks ClaudeBot, GPTBot and other AI agents.</p><p class="alt">Amazon's Creators API (needs an Amazon Associates México account)</p></div>
+    <div class="site"><h3>mercadolibre.com.mx</h3><span class="code">ai_opt_out</span><p>robots.txt blocks AI agents.</p><p class="alt">Mercado Libre's developer API with an OAuth token</p></div>
+    <div class="site"><h3>rappi.com.mx</h3><span class="code">ai_opt_out</span><p>robots.txt blocks GPTBot.</p><p class="alt">No official alternative listed</p></div>
+    <div class="site"><h3>lacomer.com.mx</h3><span class="code">robots_disallow</span><p>robots.txt disallows the page.</p><p class="alt">PROFECO's Quién es Quién en los Precios open data</p></div>
+    <div class="site"><h3>soriana.com</h3><span class="code">robots_unavailable</span><p>robots.txt answered 403, which counts as a refusal.</p><p class="alt">PROFECO's Quién es Quién en los Precios open data</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="head"><span class="kicker">Limits the code enforces</span><h2>Numbers to know</h2></div>
+  <div class="limits">
+    <div><b>4</b><span>builds at once, never two on one site</span><code>MAX_PARALLEL_BUILDS</code></div>
+    <div><b>3</b><span>attempts per build, in the same session</span><code>MAX_ATTEMPTS</code></div>
+    <div><b>12 s</b><span>between polls of a Devin session</span><code>DEVIN_POLL_SECONDS</code></div>
+    <div><b>8 ACU</b><span>spending cap per Devin session</span><code>DEVIN_MAX_ACU</code></div>
+    <div><b>1 rerun</b><span>after 20 s when a site cannot be reached</span><code>builds.py</code></div>
+    <div><b>5 rows</b><span>minimum for a brand catalog, live</span><code>MIN_BRAND_ROWS</code></div>
+    <div><b>3 MB</b><span>largest saved page fixture</span><code>MAX_FIXTURE_BYTES</code></div>
+    <div><b>8 MB</b><span>largest response, after gzip is undone</span><code>kit/http.py</code></div>
+  </div>
+</section>
+
+<div class="foot">
+  <p>Source: <code>HarryGomar/hackathon-devin-shelvin</code>, branch <code>main</code>.</p>
+  <p>The Devin logo and mark are from devin.ai. GitHub, GitHub Actions, Python, Expo and Apple icons are from Simple Icons.</p>
+</div>
+
+</div>
+
+</body>
+</html>

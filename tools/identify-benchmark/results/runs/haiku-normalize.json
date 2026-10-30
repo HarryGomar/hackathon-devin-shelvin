@@ -1,0 +1,1254 @@
+{
+  "tag": "haiku-normalize",
+  "generatedAt": "2026-10-29T09:58:07.857Z",
+  "model": "claude-opus-5-5",
+  "options": {
+    "offVariants": false,
+    "normalizeModel": "claude-haiku-5-5"
+  },
+  "armsRun": [
+    "B"
+  ],
+  "products": 25,
+  "results": [
+    {
+      "arm": "B",
+      "barcode": "7501011123588",
+      "status": "ok",
+      "identity": {
+        "id": "doritos-nacho-61-g",
+        "brand": "Doritos",
+        "productName": "Doritos Nacho",
+        "variant": "Nacho",
+        "size": "61 g",
+        "barcode": "7501011123588",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/112/3588/front_es.30.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2583,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1825,
+          "usage": {
+            "input_tokens": 1355,
+            "output_tokens": 99,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.000185,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.000185,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": false,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7500478018512",
+      "status": "ok",
+      "identity": {
+        "id": "doritos-dinamita-chile-y-limon-70-g",
+        "brand": "Doritos",
+        "productName": "Doritos Dinamita Chile y Limón",
+        "variant": "Chile y Limón",
+        "size": "70 g",
+        "barcode": "7500478018512",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/047/801/8512/front_es.20.400.jpg",
+        "confidence": 0.9,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2994,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1716,
+          "usage": {
+            "input_tokens": 1357,
+            "output_tokens": 110,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00019070000000000003,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00019070000000000003,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501011127012",
+      "status": "ok",
+      "identity": {
+        "id": "tostitos-salsa-verde-62-g",
+        "brand": "Tostitos",
+        "productName": "Tostitos Salsa Verde",
+        "variant": "Salsa Verde",
+        "size": "62 g",
+        "barcode": "7501011127012",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/112/7012/front_es.15.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2981,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1652,
+          "usage": {
+            "input_tokens": 1384,
+            "output_tokens": 107,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001919,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001919,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501011110335",
+      "status": "ok",
+      "identity": {
+        "id": "fritos-limon-y-sal-62-g",
+        "brand": "Sabritas",
+        "productName": "Fritos Limón y sal",
+        "variant": "Limón y sal",
+        "size": "62 g",
+        "barcode": "7501011110335",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/111/0335/front_es.18.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Sabritas",
+            "productName": "Fritos Limón y sal",
+            "variant": "Limón y sal",
+            "size": "62 g",
+            "confidence": 0.1
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 3303,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 2000,
+          "usage": {
+            "input_tokens": 1365,
+            "output_tokens": 157,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.000215,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.000215,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7500810003671",
+      "status": "ok",
+      "identity": {
+        "id": "barcel-takis-fuego-70-g",
+        "brand": "Barcel",
+        "productName": "Barcel Takis Fuego",
+        "variant": "Fuego",
+        "size": "70 g",
+        "barcode": "7500810003671",
+        "manufacturer": "Barcel (Grupo Bimbo)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/081/000/3671/front_es.30.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2908,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1593,
+          "usage": {
+            "input_tokens": 1357,
+            "output_tokens": 103,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00018720000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00018720000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 0.8,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501030459958",
+      "status": "ok",
+      "identity": {
+        "id": "barcel-hot-nuts-original-100-g",
+        "brand": "Barcel",
+        "productName": "Barcel Hot Nuts Original",
+        "variant": "Original",
+        "size": "100 g",
+        "barcode": "7501030459958",
+        "manufacturer": "Barcel (Grupo Bimbo)",
+        "categoryGuess": "Botanas > Cacahuates",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/103/045/9958/front_es.9.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 3002,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1713,
+          "usage": {
+            "input_tokens": 1374,
+            "output_tokens": 105,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001899,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001899,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501000111206",
+      "status": "ok",
+      "identity": {
+        "id": "bimbo-pan-de-molde-blanco-de-harina-de-trigo-620-g",
+        "brand": "Bimbo",
+        "productName": "Bimbo Pan de molde blanco de harina de trigo",
+        "variant": "Blanco",
+        "size": "620 g",
+        "barcode": "7501000111206",
+        "manufacturer": "Grupo Bimbo",
+        "categoryGuess": "Panadería > Pan de caja",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/011/1206/front_es.49.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2285,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1614,
+          "usage": {
+            "input_tokens": 1392,
+            "output_tokens": 110,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001942,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001942,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 0.8,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501030478591",
+      "status": "ok",
+      "identity": {
+        "id": "marinela-gansito-3-pack-150-g",
+        "brand": "Marinela",
+        "productName": "Marinela Gansito 3 Pack",
+        "variant": "Gansito 3 Pack",
+        "size": "150 g",
+        "barcode": "7501030478591",
+        "manufacturer": "Marinela (Grupo Bimbo)",
+        "categoryGuess": "Galletas y pastelitos > Pastelitos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/103/047/8591/front_es.7.400.jpg",
+        "confidence": 0.9,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2270,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1151,
+          "usage": {
+            "input_tokens": 1371,
+            "output_tokens": 120,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001971,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001971,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501000658923",
+      "status": "ok",
+      "identity": {
+        "id": "gamesa-galletas-marias-170-g",
+        "brand": "Gamesa",
+        "productName": "Gamesa Galletas Marías",
+        "size": "170 g",
+        "barcode": "7501000658923",
+        "manufacturer": "Gamesa (PepsiCo México)",
+        "categoryGuess": "Galletas > Galletas dulces",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/065/8923/front_es.18.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2719,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1614,
+          "usage": {
+            "input_tokens": 1370,
+            "output_tokens": 103,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001885,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001885,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "75007614",
+      "status": "ok",
+      "identity": {
+        "id": "coca-cola-600-ml",
+        "brand": "Coca-Cola",
+        "productName": "Coca-Cola",
+        "size": "600 ml",
+        "barcode": "75007614",
+        "categoryGuess": "Bebidas > Refrescos > Colas",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/000/007/500/7614/front_es.40.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2128,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1023,
+          "usage": {
+            "input_tokens": 1358,
+            "output_tokens": 90,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001808,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001808,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501055305339",
+      "status": "ok",
+      "identity": {
+        "id": "coca-cola-light-600-ml-600-ml",
+        "brand": "Coca-Cola",
+        "productName": "Coca-Cola Light 600 ml",
+        "variant": "Light",
+        "size": "600 ml",
+        "barcode": "7501055305339",
+        "manufacturer": "Coca-Cola de México (Querétaro)",
+        "categoryGuess": "Bebidas > Refrescos > Refrescos de cola sin azúcar",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/530/5339/front_es.16.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Coca-Cola",
+            "productName": "Coca-Cola Sin Azúcar 600 ml",
+            "variant": "Sin azúcar",
+            "size": "600 ml",
+            "confidence": 0.08
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 3687,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 2579,
+          "usage": {
+            "input_tokens": 1373,
+            "output_tokens": 193,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00023380000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00023380000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501020565935",
+      "status": "ok",
+      "identity": {
+        "id": "lala-leche-entera-ultrapasteurizada-adicionada-con-vitaminas-a-y-d-1-l",
+        "brand": "Lala",
+        "productName": "Lala Leche entera ultrapasteurizada adicionada con vitaminas A y D",
+        "variant": "Entera",
+        "size": "1 l",
+        "barcode": "7501020565935",
+        "categoryGuess": "Lácteos > Leche > Leche entera",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/102/056/5935/front_es.48.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2375,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1672,
+          "usage": {
+            "input_tokens": 1404,
+            "output_tokens": 111,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00019590000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00019590000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": false,
+        "nameOverlap": 0.73,
+        "variant": true,
+        "size": true,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501020515299",
+      "status": "ok",
+      "identity": {
+        "id": "lala-media-crema-250-ml",
+        "brand": "Lala",
+        "productName": "Lala Media Crema",
+        "size": "250 ml",
+        "barcode": "7501020515299",
+        "manufacturer": "Lala",
+        "categoryGuess": "Lácteos > Crema",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/102/051/5299/front_es.36.400.jpg",
+        "confidence": 0.7,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1879,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1183,
+          "usage": {
+            "input_tokens": 1367,
+            "output_tokens": 84,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001787,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001787,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501059214385",
+      "status": "ok",
+      "identity": {
+        "id": "nesquik-chocolate-400-g",
+        "brand": "Nestlé",
+        "productName": "Nesquik Chocolate",
+        "variant": "Chocolate",
+        "size": "400 g",
+        "barcode": "7501059214385",
+        "manufacturer": "Nestlé México",
+        "categoryGuess": "Abarrotes > Bebidas en polvo > Chocolate en polvo",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/921/4385/front_es.34.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Nestlé",
+            "productName": "Nesquik Chocolate",
+            "variant": "Chocolate",
+            "size": "750 g",
+            "confidence": 0.1
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1505,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1291,
+          "usage": {
+            "input_tokens": 1382,
+            "output_tokens": 164,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0002202,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0002202,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501058611062",
+      "status": "ok",
+      "identity": {
+        "id": "carnation-leche-evaporada-360-g-339-9-ml",
+        "brand": "Carnation",
+        "productName": "Carnation Leche Evaporada",
+        "size": "360 g (339.9 ml)",
+        "barcode": "7501058611062",
+        "manufacturer": "Nestlé México",
+        "categoryGuess": "Lácteos > Leche evaporada",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/861/1062/front_es.63.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Clavel",
+            "productName": "Clavel Leche Evaporada",
+            "size": "360 g (339.9 ml)",
+            "confidence": 0.1
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2874,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1787,
+          "usage": {
+            "input_tokens": 1396,
+            "output_tokens": 159,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00021909999999999999,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00021909999999999999,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501013110425",
+      "status": "ok",
+      "identity": {
+        "id": "jumex-nectar-de-manzana-250-ml",
+        "brand": "Jumex",
+        "productName": "Jumex Néctar de manzana",
+        "variant": "Manzana",
+        "size": "250 ml",
+        "barcode": "7501013110425",
+        "manufacturer": "Jumex",
+        "categoryGuess": "Bebidas > Jugos y néctares",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/311/0425/front_es.6.400.jpg",
+        "confidence": 0.9,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1280,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1057,
+          "usage": {
+            "input_tokens": 1361,
+            "output_tokens": 99,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00018559999999999998,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00018559999999999998,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501055351237",
+      "status": "ok",
+      "identity": {
+        "id": "del-valle-naranja-nada-600-ml",
+        "brand": "del Valle",
+        "productName": "del Valle Naranja & Nada",
+        "variant": "Naranja & Nada",
+        "size": "600 ml",
+        "barcode": "7501055351237",
+        "manufacturer": "Jumex (Grupo Jumex)",
+        "categoryGuess": "Bebidas > Refrescos y jugos > Jugos y néctares",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/535/1237/front_es.14.400.jpg",
+        "confidence": 0.6,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "del Valle",
+            "productName": "del Valle Naranja & Nada",
+            "variant": "Naranja & Nada",
+            "size": "500 ml",
+            "confidence": 0.2
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2136,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1430,
+          "usage": {
+            "input_tokens": 1362,
+            "output_tokens": 180,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00022620000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00022620000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501014302126",
+      "status": "ok",
+      "identity": {
+        "id": "ibarra-polvo-para-preparar-bebida-sabor-a-chocolate-327-g",
+        "brand": "Ibarra",
+        "productName": "Ibarra Polvo para preparar bebida sabor a chocolate",
+        "variant": "Chocolate",
+        "size": "327 g",
+        "barcode": "7501014302126",
+        "categoryGuess": "Bebidas > Chocolate en polvo",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/430/2126/front_es.7.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1690,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1073,
+          "usage": {
+            "input_tokens": 1391,
+            "output_tokens": 109,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001936,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001936,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": false,
+        "nameOverlap": 0.6,
+        "variant": null,
+        "size": true,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501017004423",
+      "status": "ok",
+      "identity": {
+        "id": "la-costena-frijoles-negros-refritos-580-g",
+        "brand": "La Costeña",
+        "productName": "La Costeña Frijoles Negros Refritos",
+        "variant": "Negros Refritos",
+        "size": "580 g",
+        "barcode": "7501017004423",
+        "manufacturer": "Conservas La Costeña S.A. de C.V.",
+        "categoryGuess": "Enlatados y conservas > Frijoles enlatados",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/700/4423/front_en.19.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "La Costeña",
+            "productName": "La Costeña Frijoles Negros Refritos",
+            "variant": "Negros Refritos",
+            "size": "430 g",
+            "confidence": 0.08
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 2135,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1528,
+          "usage": {
+            "input_tokens": 1433,
+            "output_tokens": 187,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0002368,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0002368,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501003105486",
+      "status": "ok",
+      "identity": {
+        "id": "herdez-atun-en-agua-aleta-amarilla-130-g",
+        "brand": "Herdez",
+        "productName": "Herdez Atún en agua aleta amarilla",
+        "variant": "En agua",
+        "size": "130 g",
+        "barcode": "7501003105486",
+        "categoryGuess": "Conservas > Atún",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/100/310/5486/front_es.24.400.jpg",
+        "confidence": 0.9,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1341,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1121,
+          "usage": {
+            "input_tokens": 1388,
+            "output_tokens": 92,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00018480000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00018480000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501018319038",
+      "status": "ok",
+      "identity": {
+        "id": "la-moderna-tornillo-200-g",
+        "brand": "La Moderna",
+        "productName": "La Moderna Tornillo",
+        "variant": "Tornillo",
+        "size": "200 g",
+        "barcode": "7501018319038",
+        "categoryGuess": "Pastas y Sopas > Pastas secas",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/831/9038/front_es.27.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1360,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1138,
+          "usage": {
+            "input_tokens": 1358,
+            "output_tokens": 96,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00018380000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00018380000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 0.8,
+        "variant": false,
+        "size": true,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501077400050",
+      "status": "ok",
+      "identity": {
+        "id": "maseca-harina-de-maiz-nixtamalizado-200-g",
+        "brand": "Maseca",
+        "productName": "Maseca Harina de Maíz Nixtamalizado",
+        "size": "200 g",
+        "barcode": "7501077400050",
+        "manufacturer": "Gruma (Maseca)",
+        "categoryGuess": "Abarrotes > Harinas > Harina de maíz",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/107/740/0050/front_en.37.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1360,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1141,
+          "usage": {
+            "input_tokens": 1384,
+            "output_tokens": 113,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001949,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001949,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": false,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501073830509",
+      "status": "ok",
+      "identity": {
+        "id": "penafiel-agua-mineral-600-ml",
+        "brand": "Peñafiel",
+        "productName": "Peñafiel Agua mineral",
+        "size": "600 ml",
+        "barcode": "7501073830509",
+        "categoryGuess": "Bebidas > Aguas > Agua mineral",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/107/383/0509/front_es.28.400.jpg",
+        "confidence": 0.7,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1778,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 968,
+          "usage": {
+            "input_tokens": 1368,
+            "output_tokens": 96,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00018480000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00018480000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501052420165",
+      "status": "ok",
+      "identity": {
+        "id": "la-sierra-frijoles-negros-refritos-430-g",
+        "brand": "La Sierra",
+        "productName": "La Sierra Frijoles Negros Refritos",
+        "variant": "Negros Refritos",
+        "size": "430 g",
+        "barcode": "7501052420165",
+        "categoryGuess": "Abarrotes > Frijol y leguminosas > Frijoles refritos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/105/242/0165/front_es.17.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1433,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1217,
+          "usage": {
+            "input_tokens": 1383,
+            "output_tokens": 115,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.00019580000000000002,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.00019580000000000002,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "B",
+      "barcode": "7501209705640",
+      "status": "ok",
+      "identity": {
+        "id": "sello-rojo-leche-entera-3-grasa-1-8-l",
+        "brand": "Sello Rojo",
+        "productName": "Sello Rojo Leche entera 3% grasa",
+        "variant": "Entera 3% grasa",
+        "size": "1.8 L",
+        "barcode": "7501209705640",
+        "categoryGuess": "Lácteos > Leche > Leche entera",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/120/970/5640/front_en.3.400.jpg",
+        "confidence": 0.6,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 1344,
+      "calls": [
+        {
+          "kind": "call",
+          "requestedModel": "claude-haiku-5-5",
+          "model": "claude-haiku-5-5",
+          "latencyMs": 1116,
+          "usage": {
+            "input_tokens": 1344,
+            "output_tokens": 111,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 0
+          },
+          "costUsd": 0.0001899,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.0001899,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 0.91,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    }
+  ]
+}

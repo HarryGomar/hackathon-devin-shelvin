@@ -1,0 +1,24 @@
+{
+ "rows": 39,
+ "spot": [
+  {
+   "native_id": "7",
+   "title": "Chipotles",
+   "price": null,
+   "brand": "Chipotles"
+  },
+  {
+   "native_id": "8",
+   "title": "Valentones",
+   "price": null,
+   "brand": "Valentones"
+  },
+  {
+   "native_id": "29",
+   "title": "Takis Fuego",
+   "price": null,
+   "brand": "Takis"
+  }
+ ],
+ "written_by": "claude code test run (standing in for Devin): read from capture bodies"
+}

@@ -1,0 +1,13 @@
+# Devin's machine for this repo: Python 3.12 and uv, the kit's environment synced, so a build session spends no
+# ACUs on setup. Check the field names against docs.devin.ai (environment > blueprint reference) before the first
+# build; they were taken from the docs' summary.
+initialize: |
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ~/.local/bin/uv python install 3.12
+maintenance: |
+  cd scraper-kit && ~/.local/bin/uv sync --group dev
+knowledge:
+  - name: test
+    contents: cd scraper-kit && uv run --group dev pytest -q
+  - name: gate
+    contents: cd scraper-kit && uv run python -m kit gate <SOURCE> --live --product '<product JSON>'

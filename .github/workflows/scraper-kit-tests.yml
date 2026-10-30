@@ -1,0 +1,55 @@
+name: scraper-kit tests
+
+on:
+  pull_request:
+    paths: ["scraper-kit/**", ".github/workflows/scraper-kit-*.yml"]
+  push:
+    branches: [main]
+    paths: ["scraper-kit/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scraper-kit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv run --group dev pytest -q
+
+  # The live gate for each source a PR adds or changes: the same `kit gate --live` the builder and the backend run.
+  # Exit 1 (the code is wrong) fails the PR, so it does not merge. Exit 2 (the site did not answer GitHub's runners)
+  # is a warning: the offline gate above still ran, and the backend gates live before it uses the source.
+  gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scraper-kit
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - name: Gate each changed source, live
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -uo pipefail
+          sources=$(git diff --name-only "$BASE"...HEAD -- sources fixtures \
+            | sed -nE 's#^scraper-kit/(sources/([a-z][a-z0-9_]*)\.py|fixtures/([a-z][a-z0-9_]*)/.*)$#\2\3#p' | sort -u)
+          if [ -z "$sources" ]; then echo "no source changed"; exit 0; fi
+          failed=0
+          for s in $sources; do
+            echo "::group::kit gate $s --live"
+            uv run python -m kit gate "$s" --live
+            code=$?
+            echo "::endgroup::"
+            if [ "$code" -eq 1 ]; then echo "::error::$s failed the gate"; failed=1; fi
+            if [ "$code" -eq 2 ]; then echo "::warning::$s: the site did not answer from CI"; fi
+          done
+          exit $failed
