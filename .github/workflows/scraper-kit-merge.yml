@@ -1,0 +1,48 @@
+# Merges a green source PR. It runs from main's copy of this file (workflow_run), never the PR's, so a PR cannot
+# change the rule that merges it. It merges only:
+# - a PR labelled kit-source whose tests passed on exactly its current head commit;
+# - whose changes are all under scraper-kit/sources/ or scraper-kit/fixtures/, with nothing deleted.
+# Anything else waits for a person.
+#
+# DISABLED on the integration branch (issue 170, worker 171): nothing may merge itself while the user is away.
+# The job's `if:` starts with `false &&`; remove that once the user agrees to auto-merging agent PRs.
+name: scraper-kit merge
+
+on:
+  workflow_run:
+    workflows: ["scraper-kit tests"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: false && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+      HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+    steps:
+      - name: Merge when the PR is a source-only change
+        run: |
+          set -euo pipefail
+          pr=$(gh pr list --head "$HEAD_BRANCH" --state open --json number,labels,headRefOid \
+            --jq '.[] | select(.headRefOid == env.HEAD_SHA) | select(any(.labels[]; .name == "kit-source")) | .number')
+          if [ -z "$pr" ]; then echo "no open kit-source PR at $HEAD_SHA"; exit 0; fi
+          files=$(gh api "repos/$GH_REPO/pulls/$pr/files" --paginate \
+            --jq '.[] | "\(.status) \(.filename)"')
+          echo "$files"
+          if echo "$files" | grep -Ev '^(added|modified) scraper-kit/(sources/[a-z][a-z0-9_]*\.py|fixtures/[a-z][a-z0-9_]*/[^/]+)$'; then
+            echo "PR #$pr changes files outside one source's file and fixture (or deletes some); leaving it for review"
+            exit 0
+          fi
+          names=$(echo "$files" | sed -E 's#^[a-z]+ scraper-kit/(sources/([a-z0-9_]+)\.py|fixtures/([a-z0-9_]+)/.*)$#\2\3#' | sort -u)
+          if [ "$(echo "$names" | wc -l)" -ne 1 ]; then
+            echo "PR #$pr touches more than one source ($names); leaving it for review"
+            exit 0
+          fi
+          gh pr merge "$pr" --squash --delete-branch --match-head-commit "$HEAD_SHA"

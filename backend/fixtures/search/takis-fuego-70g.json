@@ -1,0 +1,76 @@
+{
+ "match": {
+  "barcodes": [
+   "7500810003671"
+  ],
+  "names": [
+   "Takis Fuego 70 g",
+   "Barcel Takis Fuego 70 g"
+  ],
+  "size": "70 g"
+ },
+ "recordedBy": "Claude web search (claude-opus-5-5, SEARCH=claude) for Takis Fuego 70 g (US$0.28, 6 searches); replayed for free",
+ "pages": [
+  {
+   "url": "https://www.barcel.com.mx/node/29",
+   "retailerName": "Barcel (sitio oficial)",
+   "sourceType": "first_party",
+   "title": "Takis Fuego",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.6,
+    "reason": "Official Barcel Takis Fuego page with the same brand and flavor. It doesn't show a 70 g pack, only a 56 g serving."
+   }
+  },
+  {
+   "url": "https://www.chedraui.com.mx/botana-barcel-takis-fuego-56g-3090610/p",
+   "retailerName": "Chedraui",
+   "sourceType": "third_party",
+   "title": "Botana Barcel Takis Fuego 56g",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.4,
+    "reason": "Same brand and flavor, but the pack is 56 g, not 70 g."
+   }
+  },
+  {
+   "url": "https://www.amazon.com.mx/Barcel-BHBUSAZIN029406-Takis-Fuego/dp/B01CWP5Y4W",
+   "retailerName": "Amazon México",
+   "sourceType": "third_party",
+   "title": "Barcel Takis Fuego : Amazon.com.mx: Alimentos y Bebidas",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.35,
+    "reason": "Same brand and flavor, but the size isn't shown in the title or snippet."
+   }
+  },
+  {
+   "url": "https://www.mercadolibre.com.mx/barcel--takis-fuego-morados-pack20-botanas/up/MLMU972938456",
+   "retailerName": "Mercado Libre",
+   "sourceType": "third_party",
+   "title": "Barcel · Takis Fuego Morados Pack20 Botanas",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.35,
+    "reason": "Same product with a 70 g unit weight, but sold as a pack of 20."
+   }
+  },
+  {
+   "url": "https://www.soriana.com/~/1378380.html",
+   "retailerName": "Soriana",
+   "sourceType": "third_party",
+   "title": "Botana Takis Fuego Verde 190 Gr",
+   "matchType": "exact",
+   "verification": {
+    "status": "rejected",
+    "confidence": 0.05,
+    "reason": "Different variant (Fuego Verde) and different size (190 g)."
+   }
+  }
+ ],
+ "similarProducts": []
+}

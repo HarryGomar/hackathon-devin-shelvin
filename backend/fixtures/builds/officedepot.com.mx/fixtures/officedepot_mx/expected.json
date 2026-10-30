@@ -1,0 +1,15 @@
+{
+ "rows": 1,
+ "spot": [
+  {
+   "native_id": "/officedepot/en/Categoría/Todas/Oficina/Dulces/Takis-Fuego-Barcel-56-gr/p/100275440",
+   "title": "Takis Fuego Barcel 56 gr",
+   "price": {
+    "amount": 22.0,
+    "currency": "MXN"
+   },
+   "sku": "100275440"
+  }
+ ],
+ "written_by": "by hand, no agent: read from capture bodies (JSON-LD Product name, offers.price 22.0 MXN, sku)"
+}

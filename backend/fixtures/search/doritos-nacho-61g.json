@@ -1,0 +1,175 @@
+{
+ "match": {
+  "barcodes": [
+   "7501011123588"
+  ],
+  "names": [
+   "Doritos Nacho 61 g"
+  ],
+  "size": "61 g"
+ },
+ "recordedBy": "Claude web search (claude-opus-5-5, SEARCH=claude) run by the contract checker (US$0.36, 8 searches); replayed for free",
+ "pages": [
+  {
+   "url": "https://despensa.bodegaaurrera.com.mx/ip/nachos-sabritas-doritos-con-queso-sabor-chile-46-g/00750101112358",
+   "retailerName": "Bodega Aurrera Despensa",
+   "sourceType": "third_party",
+   "title": "Nachos Sabritas Doritos con queso sabor chile 46 g || Bodega Aurrera Despensa a tu Casa",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.55,
+    "reason": "Item ID matches this barcode and it is Doritos Nacho, but the page lists 46 g, not 61 g."
+   }
+  },
+  {
+   "url": "https://www.walmart.com.mx/ip/botana-doritos-nacho-con-queso-sabor-chile-76-g/00750101116761",
+   "retailerName": "Walmart México",
+   "sourceType": "third_party",
+   "title": "Botana Doritos Nacho con queso sabor chile 76 g",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.3,
+    "reason": "Same Doritos Nacho product, but a different size (76 g)."
+   }
+  },
+  {
+   "url": "https://www.heb.com.mx/sabritas-doritos-nacho-con-queso-y-sabor-chile-370-g-368248/p",
+   "retailerName": "HEB México",
+   "sourceType": "third_party",
+   "title": "Sabritas Doritos Nacho con Queso Y Sabor Chile 370 g",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.2,
+    "reason": "Same Doritos Nacho product, but a different size (370 g)."
+   }
+  },
+  {
+   "url": "https://www.chedraui.com.mx/doritos-nacho-1984g-3336462/p",
+   "retailerName": "Chedraui",
+   "sourceType": "third_party",
+   "title": "Doritos Nacho 198.4g",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.2,
+    "reason": "Same Doritos Nacho product, but a different size (198.4 g)."
+   }
+  },
+  {
+   "url": "https://www.walmart.com.mx/ip/botana-barcel-takis-fuego-56-gr/00750103042453",
+   "retailerName": "Walmart México",
+   "sourceType": "third_party",
+   "title": "Botana Barcel Takis fuego 56 gr",
+   "matchType": "similar",
+   "similarProductId": "similar-barcel-takis-fuego-fuego",
+   "verification": {
+    "status": "verified",
+    "confidence": 0.9,
+    "reason": "Takis Fuego 56 g."
+   }
+  },
+  {
+   "url": "https://super.walmart.com.mx/ip/botana-doritos-pizzerola-61-g/00750101112338",
+   "retailerName": "Walmart Súper",
+   "sourceType": "third_party",
+   "title": "Botana Doritos pizzerola 61 g",
+   "matchType": "exact",
+   "verification": {
+    "status": "rejected",
+    "confidence": 0.05,
+    "reason": "Same brand and size, but Pizzerola flavor, not Nacho."
+   }
+  },
+  {
+   "url": "https://www.mercadolibre.com.mx/doritos-nacho-con-queso-y-sabor-a-chile-61g/p/MLM19840154",
+   "retailerName": "Mercado Libre",
+   "sourceType": "third_party",
+   "title": "Doritos Nacho Con Queso Y Sabor A Chile 61g",
+   "matchType": "exact",
+   "verification": {
+    "status": "verified",
+    "confidence": 0.9,
+    "reason": "Same brand, Nacho flavor and 61 g size."
+   }
+  },
+  {
+   "url": "https://www.soriana.com/botanas-doritos-nacho-222-g/11883900.html",
+   "retailerName": "Soriana",
+   "sourceType": "third_party",
+   "title": "Botanas Doritos Nacho 222 g",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.2,
+    "reason": "Same Doritos Nacho product, but a different size (222 g)."
+   }
+  },
+  {
+   "url": "https://www.amazon.com.mx/Botana-Sabritas-Doritos-Nacho-335g/dp/B0CH8YTYPL",
+   "retailerName": "Amazon México",
+   "sourceType": "third_party",
+   "title": "Sabritas Doritos Nacho Sabor a Queso Botana 335 g : Amazon.com.mx: Alimentos y Bebidas",
+   "matchType": "exact",
+   "verification": {
+    "status": "uncertain",
+    "confidence": 0.2,
+    "reason": "Same Doritos Nacho product, but a different size (335 g)."
+   }
+  },
+  {
+   "url": "https://www.mercadolibre.com.mx/doritos-nachos-incognita-61g/p/MLM28977344",
+   "retailerName": "Mercado Libre",
+   "sourceType": "third_party",
+   "title": "Doritos Nachos Incognita 61g",
+   "matchType": "similar",
+   "similarProductId": "similar-doritos-incognita-chile-y-especias",
+   "verification": {
+    "status": "verified",
+    "confidence": 0.85,
+    "reason": "Doritos Incógnita in a 61 g bag."
+   }
+  },
+  {
+   "url": "https://www.mercadolibre.com.mx/botana-barcel-takis-fuego-56g/p/MLM18978893",
+   "retailerName": "Mercado Libre",
+   "sourceType": "third_party",
+   "title": "Botana Barcel Takis Fuego 56g",
+   "matchType": "similar",
+   "similarProductId": "similar-barcel-takis-fuego-fuego",
+   "verification": {
+    "status": "verified",
+    "confidence": 0.85,
+    "reason": "Takis Fuego 56 g."
+   }
+  }
+ ],
+ "similarProducts": [
+  {
+   "id": "similar-doritos-incognita-chile-y-especias",
+   "brand": "Doritos",
+   "productName": "Doritos Incógnita",
+   "relation": "same_brand",
+   "reason": "Another Doritos flavor sold in the same 61 g single-serve bag.",
+   "variant": "Chile y especias"
+  },
+  {
+   "id": "similar-doritos-pizzerola-pizza",
+   "brand": "Doritos",
+   "productName": "Doritos Pizzerola",
+   "relation": "same_brand",
+   "reason": "Another Doritos flavor in the same 61 g size.",
+   "variant": "Pizza"
+  },
+  {
+   "id": "similar-barcel-takis-fuego-fuego",
+   "brand": "Barcel",
+   "productName": "Barcel Takis Fuego",
+   "relation": "competitor",
+   "reason": "Competing single-serve corn tortilla snack of a similar size.",
+   "variant": "Fuego"
+  }
+ ]
+}

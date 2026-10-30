@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.pytest_cache/
+# run outputs; a capture worth keeping is copied into fixtures/ with `kit fixture`
+captures/
+/capture.json

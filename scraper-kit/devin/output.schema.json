@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Scraper build result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stage", "attempt", "outcome", "source", "host", "kind", "reader", "access", "rows", "product_found", "gate", "branch", "pr_url", "notes"],
+  "properties": {
+    "stage": {
+      "enum": ["probing", "writing", "capturing", "testing", "gate", "fixing", "reporting", "done"],
+      "description": "Where the session is now; update it at every step so the app can show it."
+    },
+    "progress_note": {"type": "string", "description": "One line on what is happening now, for the app."},
+    "attempt": {"type": "integer", "minimum": 1, "description": "1, then one more for each gate report the backend sent."},
+    "outcome": {
+      "enum": ["in_progress", "pr_opened", "built_no_pr", "already_exists", "robots_refused", "blocked", "kit_gap", "failed"],
+      "description": "in_progress until the attempt ends. pr_opened: the gate passes and the PR is open. blocked: the site answered 401, 403 or 429. A repo, tool or setup you cannot reach is failed, with what is missing in notes."
+    },
+    "source": {"type": ["string", "null"], "pattern": "^[a-z][a-z0-9_]*$"},
+    "host": {"type": "string"},
+    "kind": {"enum": ["first_party", "third_party"]},
+    "reader": {"enum": ["shopify", "vtex", "jsonapi", "jsonld", "open_graph", "custom", null]},
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "code", "reason"],
+      "properties": {
+        "status": {"enum": ["allowed", "refused"]},
+        "code": {"type": "string"},
+        "reason": {"type": "string"}
+      }
+    },
+    "rows": {"type": "integer", "minimum": 0, "description": "Rows the fixture replays into."},
+    "product_found": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["native_id", "url", "title", "price_amount", "price_currency"],
+      "properties": {
+        "native_id": {"type": "string"},
+        "url": {"type": "string"},
+        "title": {"type": ["string", "null"]},
+        "price_amount": {"type": ["number", "null"]},
+        "price_currency": {"type": ["string", "null"]}
+      }
+    },
+    "gate": {
+      "type": ["object", "null"],
+      "description": "The last `kit gate --live` report, as printed.",
+      "properties": {
+        "verdict": {"enum": ["pass", "fail", "unreachable"]},
+        "checks": {"type": "array", "items": {"type": "object", "properties": {"name": {"type": "string"}, "passed": {"type": "boolean"}, "detail": {"type": "string"}}}}
+      }
+    },
+    "branch": {"type": ["string", "null"], "description": "source/<SOURCE> once pushed."},
+    "pr_url": {"type": ["string", "null"]},
+    "notes": {"type": "string", "description": "Assumptions not checked on the live site, or why there is no PR."}
+  }
+}

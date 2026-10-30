@@ -1,0 +1,536 @@
+{
+  "tag": "web-sonnet-low",
+  "generatedAt": "2026-10-29T10:00:06.047Z",
+  "model": "claude-opus-5-5",
+  "options": {
+    "offVariants": false,
+    "webModel": "claude-sonnet-5-5",
+    "webEffort": "low"
+  },
+  "armsRun": [
+    "C"
+  ],
+  "products": 25,
+  "results": [
+    {
+      "arm": "C",
+      "barcode": "7501011123588",
+      "status": "ok",
+      "identity": {
+        "id": "doritos-nacho-58-g",
+        "brand": "Doritos",
+        "productName": "Doritos Nacho",
+        "variant": "Nacho",
+        "size": "58 g",
+        "barcode": "7501011123588",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/112/5704/front_es.13.400.jpg",
+        "confidence": 0.7,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Doritos",
+            "productName": "Doritos Nacho",
+            "variant": "Nacho",
+            "size": "61 g",
+            "confidence": 0.25
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 11554,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 9241,
+          "usage": {
+            "input_tokens": 21128,
+            "output_tokens": 309,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055346,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055346,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": false,
+        "all": false,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7500478018512",
+      "status": "ok",
+      "identity": {
+        "id": "doritos-dinamita-70-g",
+        "brand": "Doritos",
+        "productName": "Doritos Dinamita",
+        "variant": "Dinamita",
+        "size": "70 g",
+        "barcode": "7500478018512",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "confidence": 0.7,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Doritos",
+            "productName": "Doritos Dinamita",
+            "variant": "Dinamita",
+            "size": "65 g",
+            "confidence": 0.25
+          }
+        ]
+      },
+      "latencyMs": 14157,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 11951,
+          "usage": {
+            "input_tokens": 21187,
+            "output_tokens": 313,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055504000000000005,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055504000000000005,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": false,
+        "size": true,
+        "all": false,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501011127012",
+      "status": "ok",
+      "identity": {
+        "id": "tostitos-salsa-verde-65-g",
+        "brand": "Tostitos",
+        "productName": "Tostitos Salsa Verde",
+        "variant": "Salsa Verde",
+        "size": "65 g",
+        "barcode": "7501011127012",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/047/801/0691/front_es.16.400.jpg",
+        "confidence": 0.8,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Tostitos",
+            "productName": "Tostitos Salsa Verde",
+            "variant": "Salsa Verde",
+            "size": "145 g",
+            "confidence": 0.08
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 12351,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 9792,
+          "usage": {
+            "input_tokens": 21185,
+            "output_tokens": 325,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.05562,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.05562,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": false,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501011110335",
+      "status": "ok",
+      "identity": {
+        "id": "fritos-limon-y-sal-62-g",
+        "brand": "Fritos",
+        "productName": "Fritos Limón y sal",
+        "variant": "Limón y sal",
+        "size": "62 g",
+        "barcode": "7501011110335",
+        "manufacturer": "Sabritas (PepsiCo México)",
+        "categoryGuess": "Botanas > Frituras de maíz",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/101/116/6554/front_en.5.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 11556,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 8492,
+          "usage": {
+            "input_tokens": 21197,
+            "output_tokens": 269,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055084,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055084,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7500810003671",
+      "status": "ok",
+      "identity": {
+        "id": "takis-fuego-70-g",
+        "brand": "Takis",
+        "productName": "Takis Fuego",
+        "variant": "Fuego",
+        "size": "70 g",
+        "barcode": "7500810003671",
+        "manufacturer": "Barcel (Grupo Bimbo)",
+        "categoryGuess": "Botanas > Totopos",
+        "imageUrl": "https://images.openfoodfacts.org/images/products/750/081/002/1064/front_en.3.400.jpg",
+        "confidence": 0.85,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Takis",
+            "productName": "Takis Morados",
+            "variant": "Morados",
+            "size": "70 g",
+            "confidence": 0.1
+          }
+        ],
+        "imageSource": "openfoodfacts"
+      },
+      "latencyMs": 10909,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 8823,
+          "usage": {
+            "input_tokens": 21084,
+            "output_tokens": 304,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055208,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055208,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501030459958",
+      "status": "ok",
+      "identity": {
+        "id": "barcel-hot-nuts-multintenso-100-g",
+        "brand": "Barcel",
+        "productName": "Barcel Hot Nuts Multintenso",
+        "variant": "Multintenso",
+        "size": "100 g",
+        "barcode": "7501030459958",
+        "manufacturer": "Barcel (Grupo Bimbo)",
+        "categoryGuess": "Botanas > Cacahuates",
+        "confidence": 0.8,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Barcel",
+            "productName": "Barcel Hot Nuts",
+            "variant": "Fuego",
+            "size": "100 g",
+            "confidence": 0.1
+          }
+        ]
+      },
+      "latencyMs": 14054,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 11896,
+          "usage": {
+            "input_tokens": 21218,
+            "output_tokens": 324,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055676,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055676,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": false,
+        "nameOverlap": 0.75,
+        "variant": false,
+        "size": true,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501000111206",
+      "status": "ok",
+      "identity": {
+        "id": "bimbo-pan-blanco-680-g",
+        "brand": "Bimbo",
+        "productName": "Bimbo Pan Blanco",
+        "variant": "Blanco",
+        "size": "680 g",
+        "barcode": "7501000111206",
+        "manufacturer": "Grupo Bimbo",
+        "categoryGuess": "Panadería > Pan de caja",
+        "confidence": 0.9,
+        "source": "claude"
+      },
+      "latencyMs": 11111,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 9118,
+          "usage": {
+            "input_tokens": 21179,
+            "output_tokens": 263,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.054988,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.054988,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": false,
+        "all": false,
+        "confidentWrong": true
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501030478591",
+      "status": "ok",
+      "identity": {
+        "id": "marinela-gansito",
+        "brand": "Marinela",
+        "productName": "Marinela Gansito",
+        "variant": "Relleno sabor fresa",
+        "barcode": "7501030478591",
+        "manufacturer": "Marinela (Grupo Bimbo)",
+        "categoryGuess": "Panadería y Pastelería > Pastelitos",
+        "confidence": 0.6,
+        "source": "claude",
+        "alternatives": [
+          {
+            "brand": "Marinela",
+            "productName": "Gansito 3 Pack",
+            "variant": "Relleno sabor fresa",
+            "confidence": 0.3
+          }
+        ]
+      },
+      "latencyMs": 12875,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 10928,
+          "usage": {
+            "input_tokens": 21168,
+            "output_tokens": 326,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.055596,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.055596,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": false,
+        "all": false,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "7501000658923",
+      "status": "ok",
+      "identity": {
+        "id": "gamesa-galletas-marias-170-g",
+        "brand": "Gamesa",
+        "productName": "Gamesa Galletas Marías",
+        "variant": "Marías (vainilla y naranja)",
+        "size": "170 g",
+        "barcode": "7501000658923",
+        "manufacturer": "Gamesa (PepsiCo México)",
+        "categoryGuess": "Galletas > Galletas Marías",
+        "confidence": 0.88,
+        "source": "claude"
+      },
+      "latencyMs": 10283,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 7639,
+          "usage": {
+            "input_tokens": 21100,
+            "output_tokens": 278,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.05498,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.05498,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": null,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    },
+    {
+      "arm": "C",
+      "barcode": "75007614",
+      "status": "ok",
+      "identity": {
+        "id": "coca-cola-600-ml",
+        "brand": "Coca-Cola",
+        "productName": "Coca-Cola",
+        "variant": "Original",
+        "size": "600 ml",
+        "barcode": "75007614",
+        "manufacturer": "The Coca-Cola Company (Coca-Cola FEMSA)",
+        "categoryGuess": "Bebidas > Refrescos",
+        "confidence": 0.8,
+        "source": "claude"
+      },
+      "latencyMs": 10352,
+      "calls": [
+        {
+          "kind": "web",
+          "requestedModel": "claude-sonnet-5-5",
+          "model": "claude-sonnet-5-5",
+          "latencyMs": 8602,
+          "usage": {
+            "input_tokens": 21002,
+            "output_tokens": 277,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "web_search_requests": 1
+          },
+          "costUsd": 0.054774,
+          "cached": false
+        }
+      ],
+      "costUsd": 0.054774,
+      "fellBackToOff": false,
+      "score": {
+        "brand": true,
+        "name": true,
+        "nameOverlap": 1,
+        "variant": true,
+        "size": true,
+        "all": true,
+        "confidentWrong": false
+      }
+    }
+  ]
+}

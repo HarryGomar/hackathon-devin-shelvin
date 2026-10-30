@@ -1,0 +1,102 @@
+// Strings for ④ Results and the saved-product screen.
+import type { FetchFailureCode } from '@/api/types';
+
+export const strings = {
+  // Results
+  demoListings: 'Demo listings',
+  demoListingsMessage: 'Prices and details come from demo scrapers, not the real stores.',
+  listingCount: (n: number) => `${n} ${n === 1 ? 'listing' : 'listings'}`,
+  savedBanner: (n: number, time?: string) => `Saved ✓ ${strings.listingCount(n)}${time ? ` · ${time}` : ''}`,
+  notSavedBanner: (n: number) => `Not saved · ${strings.listingCount(n)}`,
+  nothingSavedBanner: 'No listings saved',
+  blockedTitle: (n: number) => `Blocked by the site · ${n}`,
+  blockedSubtitle: "These sites don't allow collecting these pages, so their listings weren't fetched.",
+  failuresTitle: (n: number) => `Couldn't fetch · ${n}`,
+  failuresSubtitle: 'These pages failed to load. You can try them again from Pages found.',
+  failuresSubtitleSaved: 'These pages failed to load last time. Try them again with Find more pages.',
+  /** Plain words per failure code; a code not listed here shows the backend's own error. */
+  failureReasons: {
+    ai_opt_out: 'This site blocks AI agents',
+    robots_disallow: "robots.txt doesn't allow scraping this page",
+    robots_unavailable: "robots.txt couldn't be read, so the site isn't scraped",
+    robots_unreachable: "Couldn't reach the site to check its robots.txt",
+    blocked: 'The site refused our requests',
+    rate_limited: 'The site asked us to slow down; try again later',
+    no_scraper: 'No scraper for this site yet',
+    unreachable: "Couldn't load the page",
+    parse_failed: "The page loaded, but the scraper couldn't read it",
+    not_in_catalog: "The product isn't in this site's catalog",
+  } satisfies Record<FetchFailureCode, string>,
+  // Brand catalog (a first-party site read whole)
+  catalogTitle: (retailer: string, n: number) => `Brand catalog · ${retailer} · ${n}`,
+  catalogHint: 'The brand’s own site, read as its whole catalog. These rows aren’t in the price comparison.',
+  catalogProductColumn: 'Product',
+  catalogScanned: 'Scanned',
+  catalogShowAll: (n: number) => `Show all ${n}`,
+  catalogShowFewer: 'Show fewer',
+  listingsTitle: 'Listings',
+  listingsCount: (n: number) => String(n).padStart(2, '0'),
+  storeColumn: 'Store',
+  otherProducts: 'Other products',
+  similarListings: (name: string) => `Similar · ${name}`,
+  per100Column: (unit: string) => `/100 ${unit}`,
+  per100Mixed: '/100',
+  lowMark: '▼ LOW',
+  lowestA11y: 'lowest price',
+  ean: (code: string) => `EAN ${code}`,
+  noListingsTitle: 'No listings this time',
+  noListingsMessage: 'None of the selected pages returned a listing. Try other sources.',
+  scanAnother: 'Scan another item',
+  scrapeMore: 'Scrape more sources',
+  noResultsTitle: 'No results to show',
+  noResultsMessage: 'Scan a product and scrape some pages to see its listings here.',
+  backHome: 'Back to Home',
+
+  // Listing card
+  retailerCategory: 'Retailer category',
+  standardTaxonomy: 'Google product taxonomy',
+  taxonomyCode: (code: string) => `Code ${code}`,
+  details: 'Details',
+  openPage: 'Open page',
+  viewDetails: 'View details',
+  official: 'Official',
+  scrapedAt: (when: string) => `Scraped ${when}`,
+  yes: 'Yes',
+  no: 'No',
+  empty: '—',
+
+  // Saved product
+  savedListingsTitle: 'Saved listings',
+  lastScraped: (when: string) => `Last scraped ${when}`,
+  noSavedTitle: 'No saved listings yet',
+  noSavedMessage: 'Scan this product and scrape a few pages to save its listings.',
+  findMorePages: 'Find more pages',
+  findMoreHint: 'Search again for this product. Pages you already saved are marked Scraped ✓.',
+
+  // Listing detail
+  priceLabel: (currency: string) => `Price ${currency}`,
+  per100: (unit: string) => `Per 100 ${unit}`,
+  stock: 'Stock',
+  rating: 'Rating',
+  elsewhere: 'Same product elsewhere',
+  pageUrlLabel: 'URL',
+  openPageAt: (domain: string) => domain,
+  listingTitle: 'Listing',
+  noFields: 'The page had no other details.',
+  source: 'Source',
+  retailer: 'Retailer',
+  website: 'Website',
+  scraped: 'Scraped',
+  pageUrl: 'Page URL',
+  listingNotFoundTitle: 'Listing not found',
+  listingNotFoundMessage: 'A newer scrape may have replaced it. Open the saved listings to see the latest.',
+};
+
+/** Key names that don't humanize well on their own. */
+export const fieldLabelOverrides: Record<string, string> = {
+  sku: 'SKU',
+  gtin: 'GTIN',
+  ean: 'EAN',
+  upc: 'UPC',
+  url: 'URL',
+};

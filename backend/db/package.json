@@ -1,0 +1,19 @@
+{
+  "name": "scanner-db",
+  "private": true,
+  "description": "The Shelvin Postgres schema (Drizzle). Generates the SQL migrations the Python server applies.",
+  "type": "module",
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "check": "drizzle-kit check",
+    "studio": "drizzle-kit studio",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "drizzle-kit": "0.31.11",
+    "drizzle-orm": "0.45.4",
+    "pg": "8.23.1",
+    "typescript": "7.0.2"
+  }
+}

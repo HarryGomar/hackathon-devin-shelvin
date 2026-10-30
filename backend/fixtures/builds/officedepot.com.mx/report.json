@@ -1,0 +1,30 @@
+{
+ "stage": "done",
+ "attempt": 1,
+ "outcome": "built_no_pr",
+ "source": "officedepot_mx",
+ "host": "www.officedepot.com.mx",
+ "kind": "third_party",
+ "reader": "jsonld",
+ "access": {
+  "status": "allowed",
+  "code": "allowed",
+  "reason": "robots.txt allows"
+ },
+ "rows": 1,
+ "product_found": {
+  "title": "Takis Fuego Barcel 56 gr",
+  "price": {
+   "amount": 22.0,
+   "currency": "MXN"
+  }
+ },
+ "gate": {
+  "verdict": "pass",
+  "passed": 24,
+  "total": 24
+ },
+ "branch": null,
+ "pr_url": null,
+ "notes": "Recorded by hand with kit.generic.page (no agent); kit gate --live passed 24/24. AGENT=scripted replays it."
+}

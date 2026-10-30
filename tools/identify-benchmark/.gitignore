@@ -1,0 +1,3 @@
+node_modules/
+# OFF responses, product photos and raw Claude responses (images are several MB; rebuilt on demand)
+cache/
