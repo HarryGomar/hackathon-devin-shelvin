@@ -83,6 +83,31 @@ Put the three lines dev-up prints into `app/.env` first. Without an `app/.env` t
 needs no backend. With `AGENT=devin` and `DEVIN_API_KEY`, `DEVIN_ORG_ID` in your shell, builds run on Devin.
 [docs/running.md](docs/running.md) has every option.
 
+## Devin builds on a fork
+
+Each Devin session clones a GitHub repo, writes the scraper there and opens a PR. By default that repo is
+`HarryGomar/hackathon-devin-shelvin`, which your Devin org can't reach. On a fork, every build fails until you point
+Devin at your fork:
+
+1. **Fork** this repo and clone your fork. The backend's clone must have your fork as `origin`, because it fetches
+   Devin's branches from there to run the gate.
+2. **Give Devin access to the fork.** Devin works through its GitHub App. In Devin go to
+   Settings → Integrations → GitHub and add the fork. That opens GitHub, where you install the app on the fork's
+   owner (your user or org) for that repo. You can also go to
+   [github.com/apps/devin-ai-integration](https://github.com/apps/devin-ai-integration) directly. Only the owner of
+   the account the fork lives on can install the app.
+3. **Tell the backend.** Put this in the shell or `backend/.env`, next to `DEVIN_API_KEY` and `DEVIN_ORG_ID`:
+   ```bash
+   AGENT=devin
+   DEVIN_REPO=<you>/hackathon-devin-shelvin
+   ```
+4. **Turn on Actions** in the fork (the Actions tab). Forks start with them off, and the kit tests run on Devin's PRs.
+   Auto-merge of those PRs is off on purpose. The backend's own gate is what puts a scraper live.
+5. **Check it.** All lines should say `ok`. `devin repo` fails until step 2 is done, and `repo clone` until step 1:
+   ```bash
+   cd backend && uv run python -m server check
+   ```
+
 ## Tests
 
 ```bash
